@@ -1,0 +1,78 @@
+Java 8
+
+Benchmark                                              (collection)  (size)  (tokens)  Mode  Cnt      Score      Error  Units
+IteratorFromStreamBenchmark.forEach                       ArrayList      10         2  avgt   30    159,980 ?    6,557  ns/op
+IteratorFromStreamBenchmark.iteratorFromCollectedList     ArrayList      10         2  avgt   30    268,125 ?   14,423  ns/op
+IteratorFromStreamBenchmark.iteratorFromStream            ArrayList      10         2  avgt   30    440,300 ?   25,166  ns/op
+
+IteratorFromStreamBenchmark.forEach                       ArrayList      10         4  avgt   30    170,178 ?    1,629  ns/op
+IteratorFromStreamBenchmark.iteratorFromCollectedList     ArrayList      10         4  avgt   30    273,025 ?    4,355  ns/op
+IteratorFromStreamBenchmark.iteratorFromStream            ArrayList      10         4  avgt   30    444,901 ?   18,842  ns/op
+
+IteratorFromStreamBenchmark.forEach                       ArrayList      10         8  avgt   30    232,822 ?   10,093  ns/op
+IteratorFromStreamBenchmark.iteratorFromCollectedList     ArrayList      10         8  avgt   30    363,877 ?   12,614  ns/op
+IteratorFromStreamBenchmark.iteratorFromStream            ArrayList      10         8  avgt   30    512,633 ?   23,811  ns/op
+
+IteratorFromStreamBenchmark.forEach                       ArrayList     100         2  avgt   30   1183,315 ?   56,483  ns/op
+IteratorFromStreamBenchmark.iteratorFromCollectedList     ArrayList     100         2  avgt   30   2196,048 ?   73,616  ns/op
+IteratorFromStreamBenchmark.iteratorFromStream            ArrayList     100         2  avgt   30   3232,310 ?  152,786  ns/op
+
+IteratorFromStreamBenchmark.forEach                       ArrayList     100         4  avgt   30   1393,341 ?   37,611  ns/op
+IteratorFromStreamBenchmark.iteratorFromCollectedList     ArrayList     100         4  avgt   30   2366,560 ?   82,926  ns/op
+IteratorFromStreamBenchmark.iteratorFromStream            ArrayList     100         4  avgt   30   3462,625 ?  196,903  ns/op
+
+IteratorFromStreamBenchmark.forEach                       ArrayList     100         8  avgt   30   2018,147 ?   99,033  ns/op
+IteratorFromStreamBenchmark.iteratorFromCollectedList     ArrayList     100         8  avgt   30   3027,399 ?  125,503  ns/op
+IteratorFromStreamBenchmark.iteratorFromStream            ArrayList     100         8  avgt   30   4078,904 ?   79,734  ns/op
+
+IteratorFromStreamBenchmark.forEach                       ArrayList    1000         2  avgt   30  12048,763 ?  631,037  ns/op
+IteratorFromStreamBenchmark.iteratorFromCollectedList     ArrayList    1000         2  avgt   30  19170,501 ?  291,497  ns/op
+IteratorFromStreamBenchmark.iteratorFromStream            ArrayList    1000         2  avgt   30  28702,823 ? 1497,963  ns/op
+
+IteratorFromStreamBenchmark.forEach                       ArrayList    1000         4  avgt   30  14334,574 ?  658,091  ns/op
+IteratorFromStreamBenchmark.iteratorFromCollectedList     ArrayList    1000         4  avgt   30  25377,752 ? 1620,993  ns/op
+IteratorFromStreamBenchmark.iteratorFromStream            ArrayList    1000         4  avgt   30  28769,306 ?  142,806  ns/op
+
+IteratorFromStreamBenchmark.forEach                       ArrayList    1000         8  avgt   30  20210,555 ? 1141,435  ns/op
+IteratorFromStreamBenchmark.iteratorFromCollectedList     ArrayList    1000         8  avgt   30  34055,758 ? 4467,365  ns/op
+IteratorFromStreamBenchmark.iteratorFromStream            ArrayList    1000         8  avgt   30  34931,449 ?  158,463  ns/op
+
+
+Java 9
+
+Benchmark                                              (size)  (tokens)  Mode  Cnt      Score      Error  Units
+IteratorFromStreamBenchmark.forEach                        10         2  avgt   30    184,346 ?   21,710  ns/op
+IteratorFromStreamBenchmark.iteratorFromCollectedList      10         2  avgt   30    381,278 ?   24,413  ns/op
+IteratorFromStreamBenchmark.iteratorFromStream             10         2  avgt   30    504,765 ?   38,317  ns/op
+
+IteratorFromStreamBenchmark.forEach                        10         4  avgt   30    201,768 ?   11,208  ns/op
+IteratorFromStreamBenchmark.iteratorFromCollectedList      10         4  avgt   30    366,862 ?   35,787  ns/op
+IteratorFromStreamBenchmark.iteratorFromStream             10         4  avgt   30    449,862 ?   30,574  ns/op
+
+IteratorFromStreamBenchmark.forEach                        10         8  avgt   30    257,936 ?   12,601  ns/op
+IteratorFromStreamBenchmark.iteratorFromCollectedList      10         8  avgt   30    436,529 ?   48,582  ns/op
+IteratorFromStreamBenchmark.iteratorFromStream             10         8  avgt   30    473,296 ?   40,951  ns/op
+
+IteratorFromStreamBenchmark.forEach                       100         2  avgt   30   1262,528 ?  100,465  ns/op
+IteratorFromStreamBenchmark.iteratorFromCollectedList     100         2  avgt   30   2751,340 ?  174,443  ns/op
+IteratorFromStreamBenchmark.iteratorFromStream            100         2  avgt   30   2895,844 ?  126,910  ns/op
+
+IteratorFromStreamBenchmark.forEach                       100         4  avgt   30   1858,836 ?  236,895  ns/op
+IteratorFromStreamBenchmark.iteratorFromCollectedList     100         4  avgt   30   2764,333 ?  316,173  ns/op
+IteratorFromStreamBenchmark.iteratorFromStream            100         4  avgt   30   3534,712 ?  573,701  ns/op
+
+IteratorFromStreamBenchmark.forEach                       100         8  avgt   30   3063,497 ?  665,841  ns/op
+IteratorFromStreamBenchmark.iteratorFromCollectedList     100         8  avgt   30   3992,991 ?  260,738  ns/op
+IteratorFromStreamBenchmark.iteratorFromStream            100         8  avgt   30   3661,350 ?   86,551  ns/op
+
+IteratorFromStreamBenchmark.forEach                      1000         2  avgt   30  16572,360 ?  923,041  ns/op
+IteratorFromStreamBenchmark.iteratorFromCollectedList    1000         2  avgt   30  25596,184 ? 1368,169  ns/op
+IteratorFromStreamBenchmark.iteratorFromStream           1000         2  avgt   30  28967,582 ? 1325,833  ns/op
+
+IteratorFromStreamBenchmark.forEach                      1000         4  avgt   30  21177,181 ? 2364,809  ns/op
+IteratorFromStreamBenchmark.iteratorFromCollectedList    1000         4  avgt   30  29854,663 ? 6851,493  ns/op
+IteratorFromStreamBenchmark.iteratorFromStream           1000         4  avgt   30  31549,120 ? 2015,252  ns/op
+
+IteratorFromStreamBenchmark.forEach                      1000         8  avgt   30  28180,062 ? 2982,105  ns/op
+IteratorFromStreamBenchmark.iteratorFromCollectedList    1000         8  avgt   30  37900,033 ? 3385,277  ns/op
+IteratorFromStreamBenchmark.iteratorFromStream           1000         8  avgt   30  39881,237 ? 1903,743  ns/op
