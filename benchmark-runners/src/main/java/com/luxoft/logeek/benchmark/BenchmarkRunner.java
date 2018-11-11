@@ -1,5 +1,6 @@
 package com.luxoft.logeek.benchmark;
 
+import com.luxoft.logeek.benchmark.batch.SaveAndFlushBenchmark;
 import com.luxoft.logeek.benchmark.hibernate.ProjectionVsDtoBenchmark;
 import org.openjdk.jmh.profile.GCProfiler;
 import org.openjdk.jmh.runner.Runner;
@@ -21,7 +22,8 @@ public class BenchmarkRunner {
 //				.include(VarArgCallBenchmark.class.getSimpleName())
 //				.include(StringFormatBenchmark.class.getSimpleName())
 //            .include(BoxingBenchmark.class.getSimpleName())
-            .include(ProjectionVsDtoBenchmark.class.getSimpleName())
+//            .include(ProjectionVsDtoBenchmark.class.getSimpleName())
+            .include(SaveAndFlushBenchmark.class.getSimpleName())
 //				.include(RegExpBenchmark.class.getSimpleName())
             .warmupIterations(10)
             .warmupTime(TimeValue.seconds(1))
