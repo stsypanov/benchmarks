@@ -18,12 +18,12 @@ import javax.sql.DataSource;
 @EnableJpaRepositories(basePackageClasses = ReportRepository.class)
 public class ReportExampleConfig {
 
-    @Bean
-    public DataSource dataSource() {
-        EmbeddedDatabase origin = new EmbeddedDatabaseBuilder()
-                .setType(EmbeddedDatabaseType.H2)
-                .build();
-        return new P6DataSource(origin);
-    }
+  @Bean
+  public DataSource dataSource() {
+    EmbeddedDatabase origin = new EmbeddedDatabaseBuilder()
+            .setType(EmbeddedDatabaseType.H2)
+            .build();
+    return new P6DataSource(origin);
+  }
 
 }
