@@ -9,15 +9,15 @@ public class Main {
 
   public static void main(String[] args) throws Exception {
     Object[] booleans = new Object[1000];
-    Method method = Main.class.getMethod("mthd");
+    Method method = Main.class.getMethod("readOnly");
 
     for (int i = 0; i < 1000; i++) {
       booleans[i] = method.invoke(null);
     }
   }
 
-  public static boolean mthd() {
-    return true;
+  public static boolean readOnly() {
+    return Boolean.TRUE;
   }
 
 }
