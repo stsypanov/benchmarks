@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
  * что при создании массива его элементы принимают значения по умолчанию, в частности int[]
  * заполнен нулями (для прочих типов см. https://docs.oracle.com/javase/specs/jls/se10/html/jls-4.html#jls-4.12.5)
  * Тем не менее, иногда встречается избыточный (и поэтому несколько менее производительный) код,
- * подобный описанному в методе {@link #manualZeroingElimination}
+ * подобный описанному в методе {@link #manual}
  */
 @State(Scope.Thread)
 @BenchmarkMode(Mode.AverageTime)
@@ -21,7 +21,7 @@ public class ZeroingEliminationBenchmark {
   private int size;
 
   @Benchmark
-  public int[] manualZeroingElimination() {
+  public int[] manual() {
     int[] array = new int[size];
     for (int i = 0; i < array.length; i++) {
       array[i] = 0;
@@ -30,9 +30,8 @@ public class ZeroingEliminationBenchmark {
   }
 
   @Benchmark
-  public int[] defaultZeroingElimination() {
-    int[] array = new int[size];
-    return array;
+  public int[] byDefault() {
+    return new int[size];
   }
 
 }
