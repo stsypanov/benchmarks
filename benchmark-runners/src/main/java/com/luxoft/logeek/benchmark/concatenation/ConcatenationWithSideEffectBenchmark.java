@@ -4,9 +4,9 @@ import org.openjdk.jmh.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
-@Fork(jvmArgsAppend = {"-XX:+UseParallelGC", "-Xms1g", "-Xmx1g"})
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
+@Fork(jvmArgsAppend = {"-XX:+UseParallelGC", "-Xms2g", "-Xmx2g"})
 public class ConcatenationWithSideEffectBenchmark {
 
   @Benchmark

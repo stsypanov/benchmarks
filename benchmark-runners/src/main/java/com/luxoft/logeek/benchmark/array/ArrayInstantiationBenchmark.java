@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 @State(Scope.Thread)
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
-//@Fork(jvmArgsAppend = {"-XX:+UseParallelGC", "-Xms1g", "-Xmx1g"})
+@Fork(jvmArgsAppend = {"-XX:+UseParallelGC", "-Xms2g", "-Xmx2g"})
 public class ArrayInstantiationBenchmark {
 
   @Param({"5", "10", "100"})
