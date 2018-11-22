@@ -1,0 +1,23 @@
+Benchmark                                                     (collection)    (size)  Mode  Cnt     Score   Error  Units
+
+JDK 8
+
+CollectionsAddAllVsAddAllBenchmark.addAll                          HashSet        10  avgt  100     155,2 ±   2,8  ns/op
+CollectionsAddAllVsAddAllBenchmark.addAll                          HashSet       100  avgt  100    1884,4 ±  37,4  ns/op
+CollectionsAddAllVsAddAllBenchmark.addAll                          HashSet      1000  avgt  100   17917,3 ± 298,8  ns/op
+
+CollectionsAddAllVsAddAllBenchmark.collectionsAddAll               HashSet        10  avgt  100     136,1 ±   0,8  ns/op
+CollectionsAddAllVsAddAllBenchmark.collectionsAddAll               HashSet       100  avgt  100    1538,3 ±  31,4  ns/op
+CollectionsAddAllVsAddAllBenchmark.collectionsAddAll               HashSet      1000  avgt  100   15168,6 ± 289,4  ns/op
+
+----------------------------------------------------------------------------------------------------------
+
+JDK 11
+
+CollectionsAddAllVsAddAllBenchmark.addAll                          HashSet        10  avgt  100     143,1 ±   0,6  ns/op
+CollectionsAddAllVsAddAllBenchmark.addAll                          HashSet       100  avgt  100    1738,4 ±   7,3  ns/op
+CollectionsAddAllVsAddAllBenchmark.addAll                          HashSet      1000  avgt  100   16853,9 ± 101,0  ns/op
+
+CollectionsAddAllVsAddAllBenchmark.collectionsAddAll               HashSet        10  avgt  100     132,1 ±   1,1  ns/op
+CollectionsAddAllVsAddAllBenchmark.collectionsAddAll               HashSet       100  avgt  100    1661,1 ±   7,1  ns/op
+CollectionsAddAllVsAddAllBenchmark.collectionsAddAll               HashSet      1000  avgt  100   15450,9 ±  93,9  ns/op

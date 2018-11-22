@@ -1,0 +1,23 @@
+Benchmark                                                     (collection)    (size)  Mode  Cnt     Score   Error  Units
+
+JDK 8
+
+CollectionsAddAllVsAddAllBenchmark.addAll             CopyOnWriteArrayList        10  avgt  100      56,9 ±    0,9  ns/op
+CollectionsAddAllVsAddAllBenchmark.addAll             CopyOnWriteArrayList       100  avgt  100     169,9 ±    3,3  ns/op
+CollectionsAddAllVsAddAllBenchmark.addAll             CopyOnWriteArrayList      1000  avgt  100    1244,2 ±   17,9  ns/op
+
+CollectionsAddAllVsAddAllBenchmark.collectionsAddAll  CopyOnWriteArrayList        10  avgt  100     352,2 ±    1,6  ns/op
+CollectionsAddAllVsAddAllBenchmark.collectionsAddAll  CopyOnWriteArrayList       100  avgt  100    4607,1 ±   69,5  ns/op
+CollectionsAddAllVsAddAllBenchmark.collectionsAddAll  CopyOnWriteArrayList      1000  avgt  100  355796,9 ±  232,1  ns/op
+
+----------------------------------------------------------------------------------------------------------
+
+JDK 11
+
+CollectionsAddAllVsAddAllBenchmark.addAll             CopyOnWriteArrayList        10  avgt  100      25,2 ±    0,1  ns/op
+CollectionsAddAllVsAddAllBenchmark.addAll             CopyOnWriteArrayList       100  avgt  100      84,3 ±    0,2  ns/op
+CollectionsAddAllVsAddAllBenchmark.addAll             CopyOnWriteArrayList      1000  avgt  100     760,2 ±    1,5  ns/op
+
+CollectionsAddAllVsAddAllBenchmark.collectionsAddAll  CopyOnWriteArrayList        10  avgt  100     142,9 ±    0,4  ns/op
+CollectionsAddAllVsAddAllBenchmark.collectionsAddAll  CopyOnWriteArrayList       100  avgt  100    3964,3 ±   26,0  ns/op
+CollectionsAddAllVsAddAllBenchmark.collectionsAddAll  CopyOnWriteArrayList      1000  avgt  100  364677,0 ± 1927,6  ns/op

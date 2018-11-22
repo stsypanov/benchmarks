@@ -1636,3 +1636,164 @@ ArrayConstructorVsNewInstanceBenchmark.arrayNewInstance:·gc.alloc.rate.norm    
 ArrayConstructorVsNewInstanceBenchmark.newArray:·gc.alloc.rate.norm                             10  avgt   50    56,000 ±   0,001    B/op
 ArrayConstructorVsNewInstanceBenchmark.newArray:·gc.alloc.rate.norm                            100  avgt   50   416,000 ±   0,001    B/op
 ArrayConstructorVsNewInstanceBenchmark.newArray:·gc.alloc.rate.norm                            100  avgt   50   416,000 ±   0,001    B/op
+
+
+
+Benchmark                                              (size)  Mode  Cnt    Score     Error  Units
+ZeroingEliminationBenchmark.defaultZeroingElimination      10  avgt   50   34,781 ±  11,676  ns/op
+ZeroingEliminationBenchmark.defaultZeroingElimination     100  avgt   50   90,894 ±  11,095  ns/op
+ZeroingEliminationBenchmark.defaultZeroingElimination    1000  avgt   50  700,885 ±  87,771  ns/op
+ZeroingEliminationBenchmark.manualZeroingElimination       10  avgt   50   44,806 ±   4,409  ns/op
+ZeroingEliminationBenchmark.manualZeroingElimination      100  avgt   50  142,332 ±  12,994  ns/op
+ZeroingEliminationBenchmark.manualZeroingElimination     1000  avgt   50  980,355 ± 125,014  ns/op
+
+-Xint
+
+Benchmark                                              (size)  Mode  Cnt      Score      Error  Units
+ZeroingEliminationBenchmark.defaultZeroingElimination      10  avgt   50    415,252 ±   39,680  ns/op
+ZeroingEliminationBenchmark.defaultZeroingElimination     100  avgt   50    486,058 ±   42,981  ns/op
+ZeroingEliminationBenchmark.defaultZeroingElimination    1000  avgt   50   1192,481 ±   81,539  ns/op
+ZeroingEliminationBenchmark.manualZeroingElimination       10  avgt   50    772,342 ±   58,407  ns/op
+ZeroingEliminationBenchmark.manualZeroingElimination      100  avgt   50   3011,732 ±  284,649  ns/op
+ZeroingEliminationBenchmark.manualZeroingElimination     1000  avgt   50  28127,393 ± 2098,434  ns/op
+
+
+JDK 8
+
+Benchmark                                                                        (collection)  (count)  (size)  Mode  Cnt       Score     Error  Units
+c.l.l.b.array.ZeroingEliminationBenchmark.byDefault                                       N/A      N/A      10  avgt  100      13,391 ±   0,035  ns/op
+c.l.l.b.array.ZeroingEliminationBenchmark.byDefault                                       N/A      N/A     100  avgt  100      77,156 ±   0,285  ns/op
+c.l.l.b.array.ZeroingEliminationBenchmark.byDefault                                       N/A      N/A    1000  avgt  100     428,691 ±   1,428  ns/op
+c.l.l.b.array.ZeroingEliminationBenchmark.manual                                          N/A      N/A      10  avgt  100      18,072 ±   0,047  ns/op
+c.l.l.b.array.ZeroingEliminationBenchmark.manual                                          N/A      N/A     100  avgt  100      77,671 ±   0,173  ns/op
+c.l.l.b.array.ZeroingEliminationBenchmark.manual                                          N/A      N/A    1000  avgt  100     444,280 ±   2,651  ns/op
+
+c.l.l.b.boxing.BoxingBenchmark.primitive                                                  N/A       10     N/A  avgt  100       6,351 ±   0,020  ns/op
+c.l.l.b.boxing.BoxingBenchmark.primitive                                                  N/A      100     N/A  avgt  100      40,220 ±   0,298  ns/op
+c.l.l.b.boxing.BoxingBenchmark.primitive                                                  N/A     1000     N/A  avgt  100     280,793 ±   3,359  ns/op
+c.l.l.b.boxing.BoxingBenchmark.wrapper                                                    N/A       10     N/A  avgt  100      23,747 ±   0,193  ns/op
+c.l.l.b.boxing.BoxingBenchmark.wrapper                                                    N/A      100     N/A  avgt  100     363,450 ±   9,605  ns/op
+c.l.l.b.boxing.BoxingBenchmark.wrapper                                                    N/A     1000     N/A  avgt  100    4792,014 ± 231,898  ns/op
+
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.addAll                        ArrayList      N/A      10  avgt  100      38,583 ±   0,566  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.addAll                        ArrayList      N/A     100  avgt  100     188,483 ±   7,062  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.addAll                        ArrayList      N/A    1000  avgt  100    1278,805 ±  42,944  ns/op
+
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.addAll                          HashSet      N/A      10  avgt  100     155,296 ±   2,808  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.addAll                          HashSet      N/A     100  avgt  100    1884,441 ±  37,496  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.addAll                          HashSet      N/A    1000  avgt  100   17917,339 ± 298,859  ns/op
+
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.addAll             CopyOnWriteArrayList      N/A      10  avgt  100      56,967 ±   0,972  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.addAll             CopyOnWriteArrayList      N/A     100  avgt  100     169,998 ±   3,356  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.addAll             CopyOnWriteArrayList      N/A    1000  avgt  100    1244,226 ±  17,930  ns/op
+
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.collectionsAddAll             ArrayList      N/A      10  avgt  100      62,775 ±   0,796  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.collectionsAddAll             ArrayList      N/A     100  avgt  100     495,170 ±   2,060  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.collectionsAddAll             ArrayList      N/A    1000  avgt  100    4892,506 ±  48,012  ns/op
+
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.collectionsAddAll               HashSet      N/A      10  avgt  100     136,192 ±   0,872  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.collectionsAddAll               HashSet      N/A     100  avgt  100    1538,323 ±  31,437  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.collectionsAddAll               HashSet      N/A    1000  avgt  100   15168,617 ± 289,437  ns/op
+
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.collectionsAddAll  CopyOnWriteArrayList      N/A      10  avgt  100     352,235 ±   1,656  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.collectionsAddAll  CopyOnWriteArrayList      N/A     100  avgt  100    4607,139 ±  69,529  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.collectionsAddAll  CopyOnWriteArrayList      N/A    1000  avgt  100  355796,997 ± 232,106  ns/op
+
+Benchmark                                (length)  Mode  Cnt   Score   Error  Units
+ArrayInstantiationBenchmark.constructor         5  avgt  100  13,388 ± 0,188  ns/op
+ArrayInstantiationBenchmark.constructor        10  avgt  100  14,090 ± 0,318  ns/op
+ArrayInstantiationBenchmark.constructor       100  avgt  100  84,339 ± 4,615  ns/op
+
+ArrayInstantiationBenchmark.newInstance         5  avgt  100  13,603 ± 0,281  ns/op
+ArrayInstantiationBenchmark.newInstance        10  avgt  100  14,411 ± 0,338  ns/op
+ArrayInstantiationBenchmark.newInstance       100  avgt  100  78,025 ± 0,597  ns/op
+
+
+
+
+-Xint
+
+Benchmark                                (length)  (size)  Mode  Cnt     Score    Error  Units
+ArrayInstantiationBenchmark.constructor         5     N/A  avgt  100   190,563 ±  3,142  ns/op
+ArrayInstantiationBenchmark.constructor        10     N/A  avgt  100   188,129 ±  2,311  ns/op
+ArrayInstantiationBenchmark.constructor       100     N/A  avgt  100   199,289 ±  2,550  ns/op
+
+ArrayInstantiationBenchmark.newInstance         5     N/A  avgt  100   368,959 ±  4,837  ns/op
+ArrayInstantiationBenchmark.newInstance        10     N/A  avgt  100   368,737 ±  4,880  ns/op
+ArrayInstantiationBenchmark.newInstance       100     N/A  avgt  100   376,285 ±  6,025  ns/op
+
+ZeroingEliminationBenchmark.byDefault         N/A      10  avgt  100   149,762 ±  0,941  ns/op
+ZeroingEliminationBenchmark.byDefault         N/A     100  avgt  100   167,790 ±  1,738  ns/op
+ZeroingEliminationBenchmark.byDefault         N/A    1000  avgt  100   766,917 ± 19,597  ns/op
+
+ZeroingEliminationBenchmark.manual            N/A      10  avgt  100   246,852 ±  2,231  ns/op
+ZeroingEliminationBenchmark.manual            N/A     100  avgt  100  1077,833 ±  8,504  ns/op
+ZeroingEliminationBenchmark.manual            N/A    1000  avgt  100  9497,220 ± 64,283  ns/op
+
+
+
+JDK 11
+
+c.l.l.b.array.ZeroingEliminationBenchmark.byDefault                                       N/A      N/A      10  avgt  100      10,682 ±    0,187  ns/op
+c.l.l.b.array.ZeroingEliminationBenchmark.byDefault                                       N/A      N/A     100  avgt  100      77,556 ±    0,240  ns/op
+c.l.l.b.array.ZeroingEliminationBenchmark.byDefault                                       N/A      N/A    1000  avgt  100     433,383 ±    1,938  ns/op
+c.l.l.b.array.ZeroingEliminationBenchmark.manual                                          N/A      N/A      10  avgt  100      11,209 ±    0,040  ns/op
+c.l.l.b.array.ZeroingEliminationBenchmark.manual                                          N/A      N/A     100  avgt  100      77,751 ±    0,365  ns/op
+c.l.l.b.array.ZeroingEliminationBenchmark.manual                                          N/A      N/A    1000  avgt  100     453,478 ±    1,642  ns/op
+
+c.l.l.b.boxing.BoxingBenchmark.primitive                                                  N/A       10     N/A  avgt  100       6,490 ±    0,007  ns/op
+c.l.l.b.boxing.BoxingBenchmark.primitive                                                  N/A      100     N/A  avgt  100      39,829 ±    0,198  ns/op
+c.l.l.b.boxing.BoxingBenchmark.primitive                                                  N/A     1000     N/A  avgt  100     252,533 ±    1,323  ns/op
+c.l.l.b.boxing.BoxingBenchmark.wrapper                                                    N/A       10     N/A  avgt  100      23,521 ±    0,135  ns/op
+c.l.l.b.boxing.BoxingBenchmark.wrapper                                                    N/A      100     N/A  avgt  100     352,318 ±    2,105  ns/op
+c.l.l.b.boxing.BoxingBenchmark.wrapper                                                    N/A     1000     N/A  avgt  100    4424,504 ±   25,284  ns/op
+
+
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.addAll                        ArrayList      N/A      10  avgt  100      26,118 ±    0,071  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.addAll                        ArrayList      N/A     100  avgt  100     161,167 ±    0,453  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.addAll                        ArrayList      N/A    1000  avgt  100    1276,795 ±    3,797  ns/op
+
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.collectionsAddAll             ArrayList      N/A      10  avgt  100      41,654 ±    0,076  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.collectionsAddAll             ArrayList      N/A     100  avgt  100     492,633 ±    1,528  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.collectionsAddAll             ArrayList      N/A    1000  avgt  100    6792,768 ±  165,523  ns/op
+
+
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.addAll                          HashSet      N/A      10  avgt  100     143,176 ±    0,631  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.addAll                          HashSet      N/A     100  avgt  100    1738,429 ±    7,328  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.addAll                          HashSet      N/A    1000  avgt  100   16853,930 ±  101,027  ns/op
+
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.collectionsAddAll               HashSet      N/A      10  avgt  100     132,143 ±    1,134  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.collectionsAddAll               HashSet      N/A     100  avgt  100    1661,119 ±    7,198  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.collectionsAddAll               HashSet      N/A    1000  avgt  100   15450,919 ±   93,958  ns/op
+
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.addAll             CopyOnWriteArrayList      N/A      10  avgt  100      25,214 ±    0,125  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.addAll             CopyOnWriteArrayList      N/A     100  avgt  100      84,328 ±    0,278  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.addAll             CopyOnWriteArrayList      N/A    1000  avgt  100     760,292 ±    1,513  ns/op
+
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.collectionsAddAll  CopyOnWriteArrayList      N/A      10  avgt  100     142,917 ±    0,407  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.collectionsAddAll  CopyOnWriteArrayList      N/A     100  avgt  100    3964,340 ±   26,023  ns/op
+c.l.l.b.collection.CollectionsAddAllVsAddAllBenchmark.collectionsAddAll  CopyOnWriteArrayList      N/A    1000  avgt  100  364677,061 ± 1927,647  ns/op
+
+
+
+
+
+-Xint
+
+
+Benchmark                                (length)  (size)  Mode  Cnt      Score     Error  Units
+ArrayInstantiationBenchmark.constructor         5     N/A  avgt  100    194,595 ±   5,041  ns/op
+ArrayInstantiationBenchmark.constructor        10     N/A  avgt  100    191,728 ±   2,317  ns/op
+ArrayInstantiationBenchmark.constructor       100     N/A  avgt  100    212,210 ±   3,194  ns/op
+
+ArrayInstantiationBenchmark.newInstance         5     N/A  avgt  100    354,715 ±   6,196  ns/op
+ArrayInstantiationBenchmark.newInstance        10     N/A  avgt  100    349,659 ±   4,312  ns/op
+ArrayInstantiationBenchmark.newInstance       100     N/A  avgt  100    372,522 ±   7,440  ns/op
+
+ZeroingEliminationBenchmark.byDefault         N/A      10  avgt  100    173,282 ±   2,379  ns/op
+ZeroingEliminationBenchmark.byDefault         N/A     100  avgt  100    184,976 ±   1,953  ns/op
+ZeroingEliminationBenchmark.byDefault         N/A    1000  avgt  100    891,361 ±  43,079  ns/op
+
+ZeroingEliminationBenchmark.manual            N/A      10  avgt  100    380,922 ±   7,766  ns/op
+ZeroingEliminationBenchmark.manual            N/A     100  avgt  100   2103,436 ±  36,953  ns/op
+ZeroingEliminationBenchmark.manual            N/A    1000  avgt  100  19433,171 ± 345,510  ns/op

@@ -1,0 +1,23 @@
+Benchmark                                                     (collection)    (size)  Mode  Cnt     Score   Error  Units
+
+JDK 8
+
+CollectionsAddAllVsAddAllBenchmark.addAll                        ArrayList        10  avgt  100      38,5 ±   0,5  ns/op
+CollectionsAddAllVsAddAllBenchmark.addAll                        ArrayList       100  avgt  100     188,4 ±   7,0  ns/op
+CollectionsAddAllVsAddAllBenchmark.addAll                        ArrayList      1000  avgt  100    1278,8 ±  42,9  ns/op
+
+CollectionsAddAllVsAddAllBenchmark.collectionsAddAll             ArrayList        10  avgt  100      62,7 ±   0,7  ns/op
+CollectionsAddAllVsAddAllBenchmark.collectionsAddAll             ArrayList       100  avgt  100     495,1 ±   2,0  ns/op
+CollectionsAddAllVsAddAllBenchmark.collectionsAddAll             ArrayList      1000  avgt  100    4892,5 ±  48,0  ns/op
+
+----------------------------------------------------------------------------------------------------------
+
+JDK 11
+
+CollectionsAddAllVsAddAllBenchmark.addAll                        ArrayList        10  avgt  100      26,1 ±   0,0  ns/op
+CollectionsAddAllVsAddAllBenchmark.addAll                        ArrayList       100  avgt  100     161,1 ±   0,4  ns/op
+CollectionsAddAllVsAddAllBenchmark.addAll                        ArrayList      1000  avgt  100    1276,7 ±   3,7  ns/op
+
+CollectionsAddAllVsAddAllBenchmark.collectionsAddAll             ArrayList        10  avgt  100      41,6 ±   0,0  ns/op
+CollectionsAddAllVsAddAllBenchmark.collectionsAddAll             ArrayList       100  avgt  100     492,6 ±   1,5  ns/op
+CollectionsAddAllVsAddAllBenchmark.collectionsAddAll             ArrayList      1000  avgt  100    6792,7 ± 165,5  ns/op
