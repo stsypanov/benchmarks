@@ -1,6 +1,0 @@
-                                Mode  Cnt      Score  Error   Units
-projection                      avgt   50     47,9 ±    1,6   us/op
-projection:·gc.alloc.rate.norm  avgt   50  67099,8 ±  197,1    B/op
-
-dto                             avgt   50     22,9 ±    0,6   us/op
-dto:·gc.alloc.rate.norm         avgt   50  15515,3 ±   55,6    B/op
