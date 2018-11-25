@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=benchmark
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+#    schema: benchmark
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        jdbc.batch_size: 500
+        order_inserts: true
+    hibernate:
+      ddl-auto: create-drop
+  main:
+    banner-mode: 'off'
+logging:
+  level:
+    com.p6spy: info

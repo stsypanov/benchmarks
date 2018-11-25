@@ -5,22 +5,14 @@ import com.luxoft.logeek.flush.SaveAndFlushExampleConfig;
 import com.luxoft.logeek.flush.entity.SimpleEntity;
 import com.luxoft.logeek.flush.repository.SimpleRepository;
 import com.luxoft.logeek.flush.saver.SimpleSaver;
-import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.BenchmarkMode;
-import org.openjdk.jmh.annotations.Mode;
-import org.openjdk.jmh.annotations.OutputTimeUnit;
-import org.openjdk.jmh.annotations.Param;
-import org.openjdk.jmh.annotations.Scope;
-import org.openjdk.jmh.annotations.Setup;
-import org.openjdk.jmh.annotations.State;
-import org.openjdk.jmh.annotations.TearDown;
+import org.openjdk.jmh.annotations.*;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @State(Scope.Thread)
-@OutputTimeUnit(TimeUnit.MICROSECONDS)
-@BenchmarkMode(value = Mode.AverageTime)
+@OutputTimeUnit(TimeUnit.MILLISECONDS)
+@BenchmarkMode(value = Mode.SingleShotTime)
 public class SaveAndFlushBenchmark extends ContextAwareBenchmark {
   private SimpleSaver simpleSaver;
   private SimpleRepository repository;
@@ -38,6 +30,7 @@ public class SaveAndFlushBenchmark extends ContextAwareBenchmark {
   @TearDown
   public void tearDown() {
     repository.deleteAllInBatch();
+    super.closeContext();
   }
 
   @Benchmark

@@ -1,10 +1,12 @@
 spring:
-  datasource:
-    url: jdbc:h2:mem:~/test
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
   jpa:
     show-sql: false
+    properties:
+      hibernate:
+        jdbc.batch_size: 500
+    hibernate:
+      ddl-auto: create-drop
+  jmx:
+    enabled: false
   main:
     banner-mode: 'off'
