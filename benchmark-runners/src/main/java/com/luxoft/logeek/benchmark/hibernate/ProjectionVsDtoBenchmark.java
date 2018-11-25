@@ -15,20 +15,29 @@ import java.util.stream.LongStream;
 
 @State(Scope.Thread)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
-@BenchmarkMode(value = Mode.AverageTime)
+@BenchmarkMode(value = Mode.SingleShotTime)
 public class ProjectionVsDtoBenchmark extends ContextAwareBenchmark {
   private MyRepository repository;
+
+  @Param({"10", "100", "1000"})
+  private int entityCount;
 
   @Setup
   public void init() {
     super.init(DtoVsProjectionConfig.class);
     repository = getBean(MyRepository.class);
-    List<MyEntity> entities = LongStream.range(1, 102)
+    List<MyEntity> entities = LongStream.range(1, entityCount + 1)
             .boxed()
             .map(randomLong -> new MyEntity(randomLong, "ivan"))
             .collect(Collectors.toList());
 
     repository.saveAll(entities);
+  }
+
+  @TearDown
+  public void tearDown() {
+    repository.deleteAllInBatch();
+    super.closeContext();
   }
 
   @Benchmark

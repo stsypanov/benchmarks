@@ -17,7 +17,7 @@ public class SaveAndFlushBenchmark extends ContextAwareBenchmark {
   private SimpleSaver simpleSaver;
   private SimpleRepository repository;
 
-  @Param({"10", "100","1000"})
+  @Param({"10", "100", "1000"})
   private int entityCount;
 
   @Setup

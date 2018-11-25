@@ -1,0 +1,10 @@
+JDK 8
+
+Benchmark                                       (entityCount)  Mode    Cnt     Score    Error  Units
+ProjectionVsDtoBenchmark.findAllByName                     10    ss  10000  1215,993 ± 56,369  us/op
+ProjectionVsDtoBenchmark.findAllByName                    100    ss  10000  1487,563 ± 63,301  us/op
+ProjectionVsDtoBenchmark.findAllByName                   1000    ss  10000  3763,072 ± 68,420  us/op
+
+ProjectionVsDtoBenchmark.findAllByNameUsingDto             10    ss  10000   874,810 ± 50,261  us/op
+ProjectionVsDtoBenchmark.findAllByNameUsingDto            100    ss  10000  1069,769 ± 54,696  us/op
+ProjectionVsDtoBenchmark.findAllByNameUsingDto           1000    ss  10000  1630,751 ± 59,651  us/op
