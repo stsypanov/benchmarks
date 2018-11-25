@@ -1,0 +1,23 @@
+Benchmark                                    (size)  Mode  Cnt     Score    Error  Units
+
+JDK 8 (OpenJDK 64-Bit Server VM, 25.181-b13)
+
+Benchmark                        (size)  Mode  Cnt     Score    Error  Units
+SubListToArrayBenchmark.list         10  avgt  100    18,063 ±  0,407  ns/op
+SubListToArrayBenchmark.list        100  avgt  100    99,701 ±  2,633  ns/op
+SubListToArrayBenchmark.list       1000  avgt  100   764,875 ± 21,308  ns/op
+
+SubListToArrayBenchmark.subList      10  avgt  100    42,347 ±  0,515  ns/op
+SubListToArrayBenchmark.subList     100  avgt  100   209,345 ±  3,210  ns/op
+SubListToArrayBenchmark.subList    1000  avgt  100  2011,660 ± 77,548  ns/op
+
+
+JDK 11
+
+SubListToArrayBenchmark.list         10  avgt  100   31,739 ±  0,473  ns/op
+SubListToArrayBenchmark.list        100  avgt  100  115,534 ±  1,449  ns/op
+SubListToArrayBenchmark.list       1000  avgt  100  977,770 ±  9,395  ns/op
+
+SubListToArrayBenchmark.subList      10  avgt  100   30,585 ±  0,358  ns/op
+SubListToArrayBenchmark.subList     100  avgt  100  114,713 ±  1,303  ns/op
+SubListToArrayBenchmark.subList    1000  avgt  100  935,578 ± 14,541  ns/op
