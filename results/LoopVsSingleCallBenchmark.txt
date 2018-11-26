@@ -1,0 +1,11 @@
+
+Benchmark                                     (entityCount)  Mode   Cnt       Score      Error  Units
+LoopVsSingleCallBenchmark.findInLoop                     10    ss  1000    4323,110 ±  517,576  us/op
+LoopVsSingleCallBenchmark.findInLoop                    100    ss  1000   12231,423 ± 1109,066  us/op
+LoopVsSingleCallBenchmark.findInLoop                   1000    ss  1000   36672,549 ±  632,777  us/op
+LoopVsSingleCallBenchmark.findInLoop                  10000    ss  1000  325034,019 ± 1474,741  us/op
+
+LoopVsSingleCallBenchmark.findWithSingleCall             10    ss  1000    1506,967 ±  136,623  us/op
+LoopVsSingleCallBenchmark.findWithSingleCall            100    ss  1000    3412,024 ±  333,255  us/op
+LoopVsSingleCallBenchmark.findWithSingleCall           1000    ss  1000    7814,370 ±  523,832  us/op
+LoopVsSingleCallBenchmark.findWithSingleCall          10000    ss  1000   26524,702 ±  557,952  us/op
