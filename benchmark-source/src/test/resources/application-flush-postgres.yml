@@ -5,16 +5,7 @@ spring:
     password: postgres
     driver-class-name: org.postgresql.Driver
   jpa:
-    show-sql: false
     properties:
       hibernate:
-        jdbc.batch_size: 500
-        generate_statistics: true
         dialect: org.hibernate.dialect.PostgreSQL95Dialect
-    hibernate:
-      ddl-auto: create-drop
-  main:
-    banner-mode: 'off'
-logging:
-  level:
-    com.p6spy: info
+
