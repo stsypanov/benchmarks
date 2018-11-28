@@ -4,9 +4,9 @@ spring:
     properties:
       hibernate:
         jdbc.batch_size: 500
+        generate_statistics: true
     hibernate:
       ddl-auto: create-drop
-      generate_statistics: true
   jmx:
     enabled: false
   main:
