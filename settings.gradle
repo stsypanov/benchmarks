@@ -1,5 +1,8 @@
+include "benchmark-source"
+include "benchmark-runners"
+
 rootProject.name = 'benchmark'
 
-
-include "benchmark-source"
-include "benchmark-target"
+rootProject.children.each {project ->
+    project.buildFileName = "${project.name}.gradle"
+}
