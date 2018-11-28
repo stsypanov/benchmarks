@@ -10,6 +10,7 @@ spring:
       hibernate:
         jdbc.batch_size: 500
         generate_statistics: true
+        dialect: org.hibernate.dialect.H2Dialect
   main:
     banner-mode: 'off'
 logging:

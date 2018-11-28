@@ -4,13 +4,13 @@ spring:
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
-#    schema: benchmark
   jpa:
     show-sql: false
     properties:
       hibernate:
         jdbc.batch_size: 500
         generate_statistics: true
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
     hibernate:
       ddl-auto: create-drop
   main:
