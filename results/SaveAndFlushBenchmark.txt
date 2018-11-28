@@ -1,10 +1,10 @@
 JDK 8
 
-Benchmark                                 (entityCount)  Mode    Cnt    Score   Error  Units
-SaveAndFlushBenchmark.bulkSave                       10    ss  10000   10,394 ± 0,337  ms/op
-SaveAndFlushBenchmark.bulkSave                      100    ss  10000   13,514 ± 0,264  ms/op
-SaveAndFlushBenchmark.bulkSave                     1000    ss  10000   57,822 ± 0,465  ms/op
+Benchmark                                 (entityCount)  Mode  Cnt    Score   Error  Units
+SaveAndFlushBenchmark.bulkSave                       10    ss  500   16,613 ± 1,714  ms/op
+SaveAndFlushBenchmark.bulkSave                      100    ss  500   31,371 ± 1,453  ms/op
+SaveAndFlushBenchmark.bulkSave                     1000    ss  500   35,687 ± 1,973  ms/op
 
-SaveAndFlushBenchmark.bulkSaveUsingFlush             10    ss  10000   10,821 ± 0,219  ms/op
-SaveAndFlushBenchmark.bulkSaveUsingFlush            100    ss  10000   19,377 ± 0,242  ms/op
-SaveAndFlushBenchmark.bulkSaveUsingFlush           1000    ss  10000  214,917 ± 1,826  ms/op
+SaveAndFlushBenchmark.bulkSaveUsingFlush             10    ss  500   32,653 ± 2,166  ms/op
+SaveAndFlushBenchmark.bulkSaveUsingFlush            100    ss  500   61,983 ± 6,304  ms/op
+SaveAndFlushBenchmark.bulkSaveUsingFlush           1000    ss  500  184,814 ± 6,976  ms/op
