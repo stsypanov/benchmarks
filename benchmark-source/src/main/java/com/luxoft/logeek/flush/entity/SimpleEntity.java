@@ -1,14 +1,12 @@
 package com.luxoft.logeek.flush.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class SimpleEntity {
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence")
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
   private Long id;
 
 }
