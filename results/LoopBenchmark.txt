@@ -1,0 +1,13 @@
+JDK 8
+
+
+
+JDK 11
+
+Benchmark                  (count)  Mode  Cnt     Score      Error  Units
+LoopBenchmark.effective         10  avgt   50    28,465 ±    0,263  ns/op
+LoopBenchmark.effective        100  avgt   50   283,601 ±    9,008  ns/op
+LoopBenchmark.effective       1000  avgt   50  2689,406 ±   54,819  ns/op
+LoopBenchmark.ineffective       10  avgt   50    34,284 ±    1,352  ns/op
+LoopBenchmark.ineffective      100  avgt   50   383,774 ±   34,112  ns/op
+LoopBenchmark.ineffective     1000  avgt   50  4349,019 ± 1489,686  ns/op
