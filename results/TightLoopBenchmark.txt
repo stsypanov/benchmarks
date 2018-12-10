@@ -1,0 +1,12 @@
+JDK 8
+
+Benchmark                Mode  Cnt    Score   Error  Units
+TightLoopBenchmark.fast  avgt  100  203,571 ± 2,748  ms/op
+TightLoopBenchmark.slow  avgt  100  176,942 ± 2,696  ms/op
+
+
+JDK 11
+
+Benchmark                Mode  Cnt    Score   Error  Units
+TightLoopBenchmark.fast  avgt  100  188,467 ± 5,656  ms/op
+TightLoopBenchmark.slow  avgt  100  169,884 ± 1,213  ms/op
