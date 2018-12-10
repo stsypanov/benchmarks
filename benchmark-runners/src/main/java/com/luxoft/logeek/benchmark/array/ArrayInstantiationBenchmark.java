@@ -11,17 +11,17 @@ import java.util.concurrent.TimeUnit;
 @Fork(jvmArgsAppend = {"-XX:+UseParallelGC", "-Xms2g", "-Xmx2g"})
 public class ArrayInstantiationBenchmark {
 
-  @Param({"5", "10", "100"})
-  int length;
+  @Param({"10", "100", "1000"})
+  private int length;
 
   @Benchmark
   public Object newInstance() {
-    return Array.newInstance(Integer.class, length);
+    return Array.newInstance(Object.class, length);
   }
 
   @Benchmark
   public Object constructor() {
-    return new Integer[length];
+    return new Object[length];
   }
 
 }
