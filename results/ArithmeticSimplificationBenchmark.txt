@@ -1,0 +1,11 @@
+JDK 8
+
+Benchmark                                 Mode  Cnt  Score   Error  Units
+ArithmeticSimplificationBenchmark.fast    avgt   30  3,838 ± 0,116  ns/op
+ArithmeticSimplificationBenchmark.slow    avgt   30  8,943 ± 0,094  ns/op
+
+JDK 11
+
+Benchmark                                 Mode  Cnt  Score   Error  Units
+ArithmeticSimplificationBenchmark.fast    avgt   30  3,938 ± 0,065  ns/op
+ArithmeticSimplificationBenchmark.slow    avgt   30  9,316 ± 0,045  ns/op
