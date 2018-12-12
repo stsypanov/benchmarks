@@ -18,9 +18,9 @@ import java.util.stream.LongStream;
 @BenchmarkMode(value = Mode.SingleShotTime)
 public class ProjectionVsDtoBenchmark extends ContextAwareBenchmark {
   private MyRepository repository;
+  private List<Long> ids;
 
-  @Param({"10", "100", "1000"})
-  private int entityCount;
+  private int entityCount = 1000;
 
   @Setup
   public void init() {
@@ -31,7 +31,7 @@ public class ProjectionVsDtoBenchmark extends ContextAwareBenchmark {
             .map(randomLong -> new MyEntity(randomLong, "ivan"))
             .collect(Collectors.toList());
 
-    repository.saveAll(entities);
+    ids = repository.saveAll(entities).stream().map(MyEntity::getId).collect(Collectors.toList());
   }
 
   @TearDown
@@ -41,12 +41,12 @@ public class ProjectionVsDtoBenchmark extends ContextAwareBenchmark {
   }
 
   @Benchmark
-  public List<IdNameDto> findAllByNameUsingDto() {
-    return repository.findAllByNameIntoDto("ivan");
+  public IdNameDto findAllByNameUsingDto() {
+    return repository.findDtoById(ids.get(random.nextInt(0, entityCount - 1)));
   }
 
   @Benchmark
-  public List<HasIdAndName> findAllByName() {
-    return repository.findAllByName("ivan");
+  public HasIdAndName findAllByName() {
+    return repository.findProjectionById(ids.get(random.nextInt(100)));
   }
 }

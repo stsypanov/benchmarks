@@ -15,10 +15,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.LongStream;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 @Commit
 @Transactional
@@ -31,6 +33,8 @@ public class DtoVsProjectionTest {
   private final String name = "Иван";
   @Autowired
   private MyRepository myRepository;
+  private List<Long> ids;
+  private ThreadLocalRandom random = ThreadLocalRandom.current();
 
   @Before
   public void setUp() {
@@ -39,18 +43,18 @@ public class DtoVsProjectionTest {
             .map(randomLong -> new MyEntity(randomLong, name))
             .collect(Collectors.toList());
 
-    myRepository.saveAll(entities);
+    ids = myRepository.saveAll(entities).stream().map(MyEntity::getId).collect(Collectors.toList());
   }
 
   @Test
   public void findAllByName() {
-    List<HasIdAndName> names = myRepository.findAllByName(name);
-    assertEquals(100, names.size());
+    HasIdAndName names = myRepository.findProjectionById(ids.get(random.nextInt(100)));
+    assertNotNull(names);
   }
 
   @Test
   public void findAllByNameIntoDto() {
-    List<IdNameDto> names = myRepository.findAllByNameIntoDto(name);
-    assertEquals(100, names.size());
+    IdNameDto names = myRepository.findDtoById(ids.get(random.nextInt(100)));
+    assertNotNull(names);
   }
 }

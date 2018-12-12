@@ -11,11 +11,14 @@ import java.util.List;
 
 public interface MyRepository extends JpaRepository<MyEntity, Long> {
 
-  List<HasIdAndName> findAllByName(String name);
+  @Query("select e.id, e.name " +
+          " from MyEntity e " +
+          "where e.id = :id")
+  HasIdAndName findProjectionById(@Param("id") Long id);
 
   @Query("select new com.luxoft.logeek.dto.domain.IdNameDto(e.id, e.name) " +
           " from MyEntity e " +
-          "where e.name = :name")
-  List<IdNameDto> findAllByNameIntoDto(@Param("name") String name);
+          "where e.id = :id")
+  IdNameDto findDtoById(@Param("id") Long id);
 
 }
