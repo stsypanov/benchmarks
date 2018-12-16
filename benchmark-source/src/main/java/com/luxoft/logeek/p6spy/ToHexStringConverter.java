@@ -30,14 +30,13 @@ public class ToHexStringConverter {
   }
 
   public String chars_toHexString(byte[] bytes) {
-    char[] chars = new char[bytes.length * 2];
-    for (int i = 0; i < bytes.length; i++) {
-      byte b = bytes[i];
-      int j = i * 2;
+    char[] result = new char[bytes.length * 2];
+    int idx = 0;
+    for (byte b : bytes) {
       int temp = (int) b & 0xFF;
-      chars[j] = HEX_CHARS[temp / 16];
-      chars[j + 1] = HEX_CHARS[temp % 16];
+      result[idx++] = HEX_CHARS[temp / 16];
+      result[idx++] = HEX_CHARS[temp % 16];
     }
-    return String.valueOf(chars);
+    return new String(result);
   }
 }
