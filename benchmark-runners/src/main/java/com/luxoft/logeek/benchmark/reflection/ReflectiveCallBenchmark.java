@@ -15,7 +15,7 @@ public class ReflectiveCallBenchmark {
 
   @SuppressWarnings("WeakerAccess")
   public boolean readOnly() {
-    return Boolean.TRUE;
+    return true;
   }
 
   @Setup

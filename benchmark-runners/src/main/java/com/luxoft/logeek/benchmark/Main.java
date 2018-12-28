@@ -17,7 +17,7 @@ public class Main {
   }
 
   public static boolean readOnly() {
-    return Boolean.TRUE;
+    return true;
   }
 
 }
