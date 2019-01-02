@@ -24,6 +24,9 @@ public class SubListToArrayBenchmark {
     return holder.list.subList(0, holder.size).toArray(new Integer[0]);
   }
 
+  /**
+   * Can be used for JDK < 11 to avoid performance penalty
+   */
   @Benchmark
   public Integer[] workAround(Data holder) {
     Integer[] array = holder.list.toArray(new Integer[0]);
