@@ -31,7 +31,7 @@ public class ProjectionVsDtoBenchmark extends ContextAwareBenchmark {
             .map(randomLong -> new MyEntity(randomLong, "ivan"))
             .collect(Collectors.toList());
 
-    ids = repository.save(entities).stream().map(MyEntity::getId).collect(Collectors.toList());
+    ids = repository.saveAll(entities).stream().map(MyEntity::getId).collect(Collectors.toList());
   }
 
   @TearDown
