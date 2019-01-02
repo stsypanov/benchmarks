@@ -25,21 +25,33 @@ ArrayInstantiationBenchmark.newInstance       100  avgt  100   376,2 ±  6,0  ns
 JDK 11
 
 
-ArrayInstantiationBenchmark.constructor         5  avgt  100   8,295 ± 0,298  ns/op
-ArrayInstantiationBenchmark.constructor        10  avgt  100  11,324 ± 0,421  ns/op
-ArrayInstantiationBenchmark.constructor       100  avgt  100  75,645 ± 0,350  ns/op
+Benchmark                                (length)  Mode  Cnt    Score    Error  Units
+ArrayInstantiationBenchmark.constructor        10  avgt   50   11,557 ±  0,316  ns/op
+ArrayInstantiationBenchmark.constructor       100  avgt   50   86,944 ±  4,945  ns/op
+ArrayInstantiationBenchmark.constructor      1000  avgt   50  520,722 ± 28,068  ns/op
 
-ArrayInstantiationBenchmark.newInstance         5  avgt  100   7,369 ± 0,038  ns/op
-ArrayInstantiationBenchmark.newInstance        10  avgt  100  10,241 ± 0,036  ns/op
-ArrayInstantiationBenchmark.newInstance       100  avgt  100  75,851 ± 0,416  ns/op
+ArrayInstantiationBenchmark.newInstance        10  avgt   50   11,899 ±  0,569  ns/op
+ArrayInstantiationBenchmark.newInstance       100  avgt   50   86,805 ±  5,103  ns/op
+ArrayInstantiationBenchmark.newInstance      1000  avgt   50  488,647 ± 20,829  ns/op
 
+-XX:TieredStopAtLevel=1
+
+Benchmark                                (length)  Mode  Cnt    Score     Error  Units
+ArrayInstantiationBenchmark.constructor        10  avgt   50   11,970 ±   0,522  ns/op
+ArrayInstantiationBenchmark.constructor       100  avgt   50   86,899 ±   3,630  ns/op
+ArrayInstantiationBenchmark.constructor      1000  avgt   50  973,503 ± 151,034  ns/op
+
+ArrayInstantiationBenchmark.newInstance        10  avgt   50   85,410 ±   0,644  ns/op
+ArrayInstantiationBenchmark.newInstance       100  avgt   50  100,918 ±   1,797  ns/op
+ArrayInstantiationBenchmark.newInstance      1000  avgt   50  748,972 ±   4,814  ns/op
 
 -Xint
 
-ArrayInstantiationBenchmark.constructor         5  avgt  100   194,5 ±  5,0  ns/op
-ArrayInstantiationBenchmark.constructor        10  avgt  100   191,7 ±  2,3  ns/op
-ArrayInstantiationBenchmark.constructor       100  avgt  100   212,2 ±  3,1  ns/op
+Benchmark                                (length)  Mode  Cnt    Score    Error  Units
+ArrayInstantiationBenchmark.constructor        10  avgt   50  202,987 ±  5,774  ns/op
+ArrayInstantiationBenchmark.constructor       100  avgt   50  221,049 ±  2,610  ns/op
+ArrayInstantiationBenchmark.constructor      1000  avgt   50  996,447 ± 38,988  ns/op
 
-ArrayInstantiationBenchmark.newInstance         5  avgt  100   354,7 ±  6,1  ns/op
-ArrayInstantiationBenchmark.newInstance        10  avgt  100   349,6 ±  4,3  ns/op
-ArrayInstantiationBenchmark.newInstance       100  avgt  100   372,5 ±  7,4  ns/op
+ArrayInstantiationBenchmark.newInstance        10  avgt   50  377,427 ±  6,262  ns/op
+ArrayInstantiationBenchmark.newInstance       100  avgt   50  388,667 ±  3,512  ns/op
+ArrayInstantiationBenchmark.newInstance      1000  avgt   50  998,273 ± 49,325  ns/op
