@@ -1,6 +1,5 @@
 package com.luxoft.logeek.benchmark.queue;
 
-import com.luxoft.logeek.benchmark.BaseBenchmark;
 import org.openjdk.jmh.annotations.*;
 
 import java.util.ArrayDeque;
@@ -11,7 +10,7 @@ import java.util.stream.LongStream;
 @State(Scope.Thread)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 @BenchmarkMode(value = Mode.AverageTime)
-public class ArrayDequeAsQueueBenchmark extends BaseBenchmark {
+public class ArrayDequeAsQueueBenchmark {
 
   @Param({"10", "100", "1000"})
   private int size;

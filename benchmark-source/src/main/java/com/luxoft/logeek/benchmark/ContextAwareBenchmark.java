@@ -3,11 +3,10 @@ package com.luxoft.logeek.benchmark;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-public abstract class ContextAwareBenchmark extends BaseBenchmark {
+public abstract class ContextAwareBenchmark {
   protected ConfigurableApplicationContext context;
 
   protected ConfigurableApplicationContext init(Class configurationClass) {
-    super.init();
     return SpringApplication.run(configurationClass);
   }
 

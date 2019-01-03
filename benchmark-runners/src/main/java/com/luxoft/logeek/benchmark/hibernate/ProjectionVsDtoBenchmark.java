@@ -9,6 +9,7 @@ import com.luxoft.logeek.dto.repository.MyRepository;
 import org.openjdk.jmh.annotations.*;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.LongStream;
@@ -18,6 +19,7 @@ import java.util.stream.LongStream;
 @BenchmarkMode(value = Mode.SingleShotTime)
 public class ProjectionVsDtoBenchmark extends ContextAwareBenchmark {
   private MyRepository repository;
+  private ThreadLocalRandom random;
   private List<Long> ids;
 
   private int entityCount = 1000;
@@ -25,6 +27,7 @@ public class ProjectionVsDtoBenchmark extends ContextAwareBenchmark {
   @Setup
   public void init() {
     super.init(DtoVsProjectionConfig.class);
+    random = ThreadLocalRandom.current();
     repository = getBean(MyRepository.class);
     List<MyEntity> entities = LongStream.range(1, entityCount + 1)
             .boxed()
