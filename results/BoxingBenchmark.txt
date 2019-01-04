@@ -2,7 +2,6 @@ Benchmark                         (size)  Mode  Cnt    Score   Error  Units
 
 JDK 8
 
-
 BoxingBenchmark.primitive           10   avgt  100       6,3 ±   0,0  ns/op
 BoxingBenchmark.primitive          100   avgt  100      40,2 ±   0,2  ns/op
 BoxingBenchmark.primitive         1000   avgt  100     280,7 ±   3,3  ns/op
