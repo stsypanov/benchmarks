@@ -12,38 +12,51 @@ public class StringBuilderAppendBenchmark {
   @Benchmark
   @SuppressWarnings("StringBufferReplaceableByString")
   public String appendSubString(Data data) {
-    String str = data.str;
+    String englishStr = data.englishStr;
+    String russianStr = data.russianStr;
     int beginIndex = data.beginIndex;
     int endIndex = data.endIndex;
 
-    String substring = str.substring(beginIndex, endIndex);
+    String substring = data.useRussian ?
+            russianStr.substring(beginIndex, endIndex) :
+            englishStr.substring(beginIndex, endIndex);
 
     return new StringBuilder().append('L').append(substring).append(';').toString();
   }
 
   @Benchmark
   public String concatSubString(Data data) {
-    String str = data.str;
+    String englishStr = data.englishStr;
+    String russianStr = data.russianStr;
     int beginIndex = data.beginIndex;
     int endIndex = data.endIndex;
 
-    String substring = str.substring(beginIndex, endIndex);
+    String substring = data.useRussian ?
+            russianStr.substring(beginIndex, endIndex) :
+            englishStr.substring(beginIndex, endIndex);
 
-    return "L" + substring + ';';
+    return new StringBuilder().append('L').append(substring).append(';').toString();
   }
 
   @Benchmark
   public String appendBounds(Data data) {
-    String str = data.str;
+    String englishStr = data.englishStr;
+    String russianStr = data.russianStr;
     int beginIndex = data.beginIndex;
     int endIndex = data.endIndex;
 
-    return new StringBuilder().append('L').append(str, beginIndex, endIndex).append(';').toString();
+    String appended = data.useRussian ? russianStr : englishStr;
+
+    return new StringBuilder().append('L').append(appended, beginIndex, endIndex).append(';').toString();
   }
 
   @State(Scope.Thread)
   public static class Data {
-    String str;
+    String englishStr;
+    String russianStr;
+
+    @Param({"true", "false"})
+    boolean useRussian;
 
     @Param({"10", "100", "1000"})
     private int length;
@@ -51,22 +64,25 @@ public class StringBuilderAppendBenchmark {
     private int beginIndex;
     private int endIndex;
 
+    private ThreadLocalRandom random = ThreadLocalRandom.current();
+
     @Setup
     public void setup() {
-      str = randomString();
+      englishStr = randomString("abcdefghijklmnopqrstuvwxyz");
+      russianStr = randomString("абвгдеёжзиклмнопрстуфхцчшщьыъэюя");
       beginIndex = length / 4;
-      endIndex = length / 4* 3;
+      endIndex = length / 4 * 3;
     }
 
-    private String randomString() {
-      ThreadLocalRandom random = ThreadLocalRandom.current();
-      char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+    private String randomString(String alphabet) {
+      char[] chars = alphabet.toCharArray();
 
       StringBuilder sb = new StringBuilder(length);
       for (int i = 0; i < length; i++) {
         char c = chars[random.nextInt(chars.length)];
         sb.append(c);
       }
+
       return sb.toString();
     }
   }
