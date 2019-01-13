@@ -7,31 +7,18 @@ import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
+@Fork(jvmArgsAppend = {"-Xms2g", "-Xmx2g"})
 public class StringBuilderAppendBenchmark {
 
   @Benchmark
   @SuppressWarnings("StringBufferReplaceableByString")
   public String appendSubString(Data data) {
-    String englishStr = data.englishStr;
-    String russianStr = data.russianStr;
+    String englishStr = data.latinStr;
+    String russianStr = data.nonLatinStr;
     int beginIndex = data.beginIndex;
     int endIndex = data.endIndex;
 
-    String substring = data.useRussian ?
-            russianStr.substring(beginIndex, endIndex) :
-            englishStr.substring(beginIndex, endIndex);
-
-    return new StringBuilder().append('L').append(substring).append(';').toString();
-  }
-
-  @Benchmark
-  public String concatSubString(Data data) {
-    String englishStr = data.englishStr;
-    String russianStr = data.russianStr;
-    int beginIndex = data.beginIndex;
-    int endIndex = data.endIndex;
-
-    String substring = data.useRussian ?
+    String substring = data.appendNonLatin ?
             russianStr.substring(beginIndex, endIndex) :
             englishStr.substring(beginIndex, endIndex);
 
@@ -40,23 +27,23 @@ public class StringBuilderAppendBenchmark {
 
   @Benchmark
   public String appendBounds(Data data) {
-    String englishStr = data.englishStr;
-    String russianStr = data.russianStr;
+    String englishStr = data.latinStr;
+    String russianStr = data.nonLatinStr;
     int beginIndex = data.beginIndex;
     int endIndex = data.endIndex;
 
-    String appended = data.useRussian ? russianStr : englishStr;
+    String appended = data.appendNonLatin ? russianStr : englishStr;
 
     return new StringBuilder().append('L').append(appended, beginIndex, endIndex).append(';').toString();
   }
 
   @State(Scope.Thread)
   public static class Data {
-    String englishStr;
-    String russianStr;
+    String latinStr;
+    String nonLatinStr;
 
     @Param({"true", "false"})
-    boolean useRussian;
+    boolean appendNonLatin;
 
     @Param({"10", "100", "1000"})
     private int length;
@@ -68,8 +55,8 @@ public class StringBuilderAppendBenchmark {
 
     @Setup
     public void setup() {
-      englishStr = randomString("abcdefghijklmnopqrstuvwxyz");
-      russianStr = randomString("абвгдеёжзиклмнопрстуфхцчшщьыъэюя");
+      latinStr = randomString("abcdefghijklmnopqrstuvwxyz");
+      nonLatinStr = randomString("абвгдеёжзиклмнопрстуфхцчшщьыъэюя");
       beginIndex = length / 4;
       endIndex = length / 4 * 3;
     }
