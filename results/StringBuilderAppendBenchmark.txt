@@ -30,30 +30,39 @@ StringBuilderAppendBenchmark.concatSubString:·gc.alloc.rate.norm               
 
 JDK 11
 
-Benchmark                                                                  (length)  Mode  Cnt      Score     Error   Units
-StringBuilderAppendBenchmark.appendBounds                                        10  avgt   25     25,940 ±   1,517   ns/op
-StringBuilderAppendBenchmark.appendBounds                                       100  avgt   25     65,536 ±   0,854   ns/op
-StringBuilderAppendBenchmark.appendBounds                                      1000  avgt   25    293,726 ±   5,737   ns/op
+Benchmark                                                          (appendNonLatin)  (length)  Mode  Cnt     Score     Error   Units
+StringBuilderAppendBenchmark.appendBounds                                      true        10  avgt  100    39,092 ±   0,558   ns/op
+StringBuilderAppendBenchmark.appendBounds                                      true       100  avgt  100    96,113 ±   0,739   ns/op
+StringBuilderAppendBenchmark.appendBounds                                      true      1000  avgt  100   653,716 ±  82,838   ns/op
 
-StringBuilderAppendBenchmark.appendSubString                                     10  avgt   25     22,505 ±   0,738   ns/op
-StringBuilderAppendBenchmark.appendSubString                                    100  avgt   25     26,194 ±   1,469   ns/op
-StringBuilderAppendBenchmark.appendSubString                                   1000  avgt   25     89,594 ±   1,854   ns/op
+StringBuilderAppendBenchmark.appendSubString                                   true        10  avgt  100    27,052 ±   0,513   ns/op
+StringBuilderAppendBenchmark.appendSubString                                   true       100  avgt  100    46,154 ±   6,511   ns/op
+StringBuilderAppendBenchmark.appendSubString                                   true      1000  avgt  100   226,889 ±   5,857   ns/op
 
-StringBuilderAppendBenchmark.concatSubString                                     10  avgt   25     21,664 ±   0,067   ns/op
-StringBuilderAppendBenchmark.concatSubString                                    100  avgt   25     25,052 ±   0,434   ns/op
-StringBuilderAppendBenchmark.concatSubString                                   1000  avgt   25     91,589 ±   1,485   ns/op
+StringBuilderAppendBenchmark.appendBounds                                     false        10  avgt  100    26,044 ±   0,291   ns/op
+StringBuilderAppendBenchmark.appendBounds                                     false       100  avgt  100    64,630 ±   0,565   ns/op
+StringBuilderAppendBenchmark.appendBounds                                     false      1000  avgt  100   314,778 ±  11,625   ns/op
 
-StringBuilderAppendBenchmark.appendBounds:·gc.alloc.rate.norm                    10  avgt   25    104,000 ±   0,001    B/op
-StringBuilderAppendBenchmark.appendBounds:·gc.alloc.rate.norm                   100  avgt   25    344,000 ±   0,001    B/op
-StringBuilderAppendBenchmark.appendBounds:·gc.alloc.rate.norm                  1000  avgt   25   2144,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendSubString                                  false        10  avgt  100    22,899 ±   0,365   ns/op
+StringBuilderAppendBenchmark.appendSubString                                  false       100  avgt  100    25,075 ±   0,166   ns/op
+StringBuilderAppendBenchmark.appendSubString                                  false      1000  avgt  100    88,880 ±   0,258   ns/op
 
-StringBuilderAppendBenchmark.appendSubString:·gc.alloc.rate.norm                 10  avgt   25     96,000 ±   0,001    B/op
-StringBuilderAppendBenchmark.appendSubString:·gc.alloc.rate.norm                100  avgt   25    192,000 ±   0,001    B/op
-StringBuilderAppendBenchmark.appendSubString:·gc.alloc.rate.norm               1000  avgt   25   1088,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendBounds:·gc.alloc.rate.norm                  true        10  avgt  100   184,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendBounds:·gc.alloc.rate.norm                  true       100  avgt  100   688,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendBounds:·gc.alloc.rate.norm                  true      1000  avgt  100  5192,001 ±   0,001    B/op
 
-StringBuilderAppendBenchmark.concatSubString:·gc.alloc.rate.norm                 10  avgt   25     96,000 ±   0,001    B/op
-StringBuilderAppendBenchmark.concatSubString:·gc.alloc.rate.norm                100  avgt   25    192,000 ±   0,001    B/op
-StringBuilderAppendBenchmark.concatSubString:·gc.alloc.rate.norm               1000  avgt   25   1088,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendSubString:·gc.alloc.rate.norm               true        10  avgt  100   128,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendSubString:·gc.alloc.rate.norm               true       100  avgt  100   360,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendSubString:·gc.alloc.rate.norm               true      1000  avgt  100  2608,000 ±   0,001    B/op
+
+StringBuilderAppendBenchmark.appendBounds:·gc.alloc.rate.norm                 false        10  avgt  100   104,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendBounds:·gc.alloc.rate.norm                 false       100  avgt  100   344,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendBounds:·gc.alloc.rate.norm                 false      1000  avgt  100  2144,000 ±   0,001    B/op
+
+StringBuilderAppendBenchmark.appendSubString:·gc.alloc.rate.norm              false        10  avgt  100    96,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendSubString:·gc.alloc.rate.norm              false       100  avgt  100   192,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendSubString:·gc.alloc.rate.norm              false      1000  avgt  100  1088,000 ±   0,001    B/op
+
 
 C1 (-XX:TieredStopAtLevel=1)
 
@@ -86,27 +95,35 @@ StringBuilderAppendBenchmark.concatSubString:·gc.alloc.rate.norm               
 
 JDK 11
 
-Benchmark                                                                  (length)  Mode  Cnt      Score     Error   Units
-StringBuilderAppendBenchmark.appendBounds                                        10  avgt   25     58,710 ±   0,948   ns/op
-StringBuilderAppendBenchmark.appendBounds                                       100  avgt   25    296,000 ±   7,197   ns/op
-StringBuilderAppendBenchmark.appendBounds                                      1000  avgt   25   2356,824 ±   4,067   ns/op
+Benchmark                                                          (appendNonLatin)  (length)  Mode  Cnt     Score     Error   Units
+StringBuilderAppendBenchmark.appendBounds                                      true        10  avgt  100    99,823 ±   1,956   ns/op
+StringBuilderAppendBenchmark.appendBounds                                      true       100  avgt  100   395,615 ±   4,098   ns/op
+StringBuilderAppendBenchmark.appendBounds                                      true      1000  avgt  100  3198,072 ±  39,497   ns/op
 
-StringBuilderAppendBenchmark.appendSubString                                     10  avgt   25     54,516 ±   0,127   ns/op
-StringBuilderAppendBenchmark.appendSubString                                    100  avgt   25     85,963 ±   0,450   ns/op
-StringBuilderAppendBenchmark.appendSubString                                   1000  avgt   25    251,000 ±   0,984   ns/op
+StringBuilderAppendBenchmark.appendSubString                                   true        10  avgt  100    94,530 ±   4,256   ns/op
+StringBuilderAppendBenchmark.appendSubString                                   true       100  avgt  100   148,147 ±   0,853   ns/op
+StringBuilderAppendBenchmark.appendSubString                                   true      1000  avgt  100   640,169 ±   1,821   ns/op
 
-StringBuilderAppendBenchmark.concatSubString                                     10  avgt   25     49,263 ±   0,207   ns/op
-StringBuilderAppendBenchmark.concatSubString                                    100  avgt   25     53,949 ±   0,282   ns/op
-StringBuilderAppendBenchmark.concatSubString                                   1000  avgt   25    115,923 ±   0,782   ns/op
+StringBuilderAppendBenchmark.appendBounds                                     false        10  avgt  100    79,023 ±  14,429   ns/op
+StringBuilderAppendBenchmark.appendBounds                                     false       100  avgt  100   298,557 ±   9,347   ns/op
+StringBuilderAppendBenchmark.appendBounds                                     false      1000  avgt  100  2433,623 ±  32,966   ns/op
 
-StringBuilderAppendBenchmark.appendBounds:·gc.alloc.rate.norm                    10  avgt   25    104,000 ±   0,001    B/op
-StringBuilderAppendBenchmark.appendBounds:·gc.alloc.rate.norm                   100  avgt   25    344,000 ±   0,001    B/op
-StringBuilderAppendBenchmark.appendBounds:·gc.alloc.rate.norm                  1000  avgt   25   2144,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendSubString                                  false        10  avgt  100    54,906 ±   0,112   ns/op
+StringBuilderAppendBenchmark.appendSubString                                  false       100  avgt  100    86,471 ±   0,453   ns/op
+StringBuilderAppendBenchmark.appendSubString                                  false      1000  avgt  100   251,550 ±   0,998   ns/op
 
-StringBuilderAppendBenchmark.appendSubString:·gc.alloc.rate.norm                 10  avgt   25    152,000 ±   0,001    B/op
-StringBuilderAppendBenchmark.appendSubString:·gc.alloc.rate.norm                100  avgt   25    440,000 ±   0,001    B/op
-StringBuilderAppendBenchmark.appendSubString:·gc.alloc.rate.norm               1000  avgt   25   2688,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendBounds:·gc.alloc.rate.norm                  true        10  avgt  100   184,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendBounds:·gc.alloc.rate.norm                  true       100  avgt  100   688,001 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendBounds:·gc.alloc.rate.norm                  true      1000  avgt  100  5192,005 ±   0,003    B/op
 
-StringBuilderAppendBenchmark.concatSubString:·gc.alloc.rate.norm                 10  avgt   25     96,000 ±   0,001    B/op
-StringBuilderAppendBenchmark.concatSubString:·gc.alloc.rate.norm                100  avgt   25    192,000 ±   0,001    B/op
-StringBuilderAppendBenchmark.concatSubString:·gc.alloc.rate.norm               1000  avgt   25   1088,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendSubString:·gc.alloc.rate.norm               true        10  avgt  100   256,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendSubString:·gc.alloc.rate.norm               true       100  avgt  100   904,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendSubString:·gc.alloc.rate.norm               true      1000  avgt  100  6752,001 ±   0,001    B/op
+
+StringBuilderAppendBenchmark.appendBounds:·gc.alloc.rate.norm                 false        10  avgt  100   104,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendBounds:·gc.alloc.rate.norm                 false       100  avgt  100   344,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendBounds:·gc.alloc.rate.norm                 false      1000  avgt  100  2144,004 ±   0,003    B/op
+
+StringBuilderAppendBenchmark.appendSubString:·gc.alloc.rate.norm              false        10  avgt  100   152,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendSubString:·gc.alloc.rate.norm              false       100  avgt  100   440,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendSubString:·gc.alloc.rate.norm              false      1000  avgt  100  2688,000 ±   0,001    B/op
