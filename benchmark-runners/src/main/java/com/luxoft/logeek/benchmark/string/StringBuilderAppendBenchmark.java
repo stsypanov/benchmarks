@@ -14,12 +14,12 @@ public class StringBuilderAppendBenchmark {
   @SuppressWarnings("StringBufferReplaceableByString")
   public String appendSubString(Data data) {
     String englishStr = data.latinStr;
-    String russianStr = data.nonLatinStr;
+    String nonLatinStr = data.nonLatinStr;
     int beginIndex = data.beginIndex;
     int endIndex = data.endIndex;
 
     String substring = data.appendNonLatin ?
-            russianStr.substring(beginIndex, endIndex) :
+            nonLatinStr.substring(beginIndex, endIndex) :
             englishStr.substring(beginIndex, endIndex);
 
     return new StringBuilder().append('L').append(substring).append(';').toString();
@@ -28,11 +28,11 @@ public class StringBuilderAppendBenchmark {
   @Benchmark
   public String appendBounds(Data data) {
     String englishStr = data.latinStr;
-    String russianStr = data.nonLatinStr;
+    String nonLatinStr = data.nonLatinStr;
     int beginIndex = data.beginIndex;
     int endIndex = data.endIndex;
 
-    String appended = data.appendNonLatin ? russianStr : englishStr;
+    String appended = data.appendNonLatin ? nonLatinStr : englishStr;
 
     return new StringBuilder().append('L').append(appended, beginIndex, endIndex).append(';').toString();
   }
