@@ -55,7 +55,7 @@ StringBuilderAppendBenchmark.concatSubString:·gc.alloc.rate.norm               
 StringBuilderAppendBenchmark.concatSubString:·gc.alloc.rate.norm                100  avgt   25    192,000 ±   0,001    B/op
 StringBuilderAppendBenchmark.concatSubString:·gc.alloc.rate.norm               1000  avgt   25   1088,000 ±   0,001    B/op
 
-C1
+C1 (-XX:TieredStopAtLevel=1)
 
 JDK 8
 
@@ -86,3 +86,27 @@ StringBuilderAppendBenchmark.concatSubString:·gc.alloc.rate.norm               
 
 JDK 11
 
+Benchmark                                                                  (length)  Mode  Cnt      Score     Error   Units
+StringBuilderAppendBenchmark.appendBounds                                        10  avgt   25     58,710 ±   0,948   ns/op
+StringBuilderAppendBenchmark.appendBounds                                       100  avgt   25    296,000 ±   7,197   ns/op
+StringBuilderAppendBenchmark.appendBounds                                      1000  avgt   25   2356,824 ±   4,067   ns/op
+
+StringBuilderAppendBenchmark.appendSubString                                     10  avgt   25     54,516 ±   0,127   ns/op
+StringBuilderAppendBenchmark.appendSubString                                    100  avgt   25     85,963 ±   0,450   ns/op
+StringBuilderAppendBenchmark.appendSubString                                   1000  avgt   25    251,000 ±   0,984   ns/op
+
+StringBuilderAppendBenchmark.concatSubString                                     10  avgt   25     49,263 ±   0,207   ns/op
+StringBuilderAppendBenchmark.concatSubString                                    100  avgt   25     53,949 ±   0,282   ns/op
+StringBuilderAppendBenchmark.concatSubString                                   1000  avgt   25    115,923 ±   0,782   ns/op
+
+StringBuilderAppendBenchmark.appendBounds:·gc.alloc.rate.norm                    10  avgt   25    104,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendBounds:·gc.alloc.rate.norm                   100  avgt   25    344,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendBounds:·gc.alloc.rate.norm                  1000  avgt   25   2144,000 ±   0,001    B/op
+
+StringBuilderAppendBenchmark.appendSubString:·gc.alloc.rate.norm                 10  avgt   25    152,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendSubString:·gc.alloc.rate.norm                100  avgt   25    440,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.appendSubString:·gc.alloc.rate.norm               1000  avgt   25   2688,000 ±   0,001    B/op
+
+StringBuilderAppendBenchmark.concatSubString:·gc.alloc.rate.norm                 10  avgt   25     96,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.concatSubString:·gc.alloc.rate.norm                100  avgt   25    192,000 ±   0,001    B/op
+StringBuilderAppendBenchmark.concatSubString:·gc.alloc.rate.norm               1000  avgt   25   1088,000 ±   0,001    B/op
