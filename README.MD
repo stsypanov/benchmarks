@@ -148,3 +148,73 @@ public boolean addAll(Data data) {
  - [./results/CollectionsAddAllVsAddAllBenchmark_HashSet.txt](./results/CollectionsAddAllVsAddAllBenchmark_HashSet.txt)
  - [./results/CollectionsAddAllVsAddAllBenchmark_COWList.txt](./results/CollectionsAddAllVsAddAllBenchmark_COWList.txt)
  - [./results/CollectionsAddAllVsAddAllBenchmark_ArrayList.txt](./results/CollectionsAddAllVsAddAllBenchmark_ArrayList.txt)
+
+##ConcurrentHashMapBenchmark
+
+Показывает падение производительности в JDK 8 из-за ошибки в реализации метода `ConcurrentHashMap::computeIfAbsent`.
+
+Рассмотрим код:
+```java
+private ConcurrentHashMap<Integer, Integer> map = new ConcurrentHashMap<>();
+
+@Benchmark
+@Threads(2)
+public Integer computeIfAbsent() {
+  return map.computeIfAbsent(key, function);
+}
+
+@Benchmark
+@Threads(2)
+public Integer getAndPut() {
+  Integer key = this.key;
+  Integer value = map.get(key);
+  if (value == null) {
+    value = function.apply(key);
+    map.put(key, value);
+  }
+  return value;
+}
+```
+
+Несмотря на то, что оба примера делают одно и тоже, использование `ConcurrentHashMap::computeIfAbsent`
+сильно замедляет исполнение, т.к. блокировка применяется ко всему методу, а не только к той части, которая
+кладёт значение при отсутствии ключа.
+
+Описание: https://bugs.openjdk.java.net/browse/JDK-8161372
+
+Исправление: http://hg.openjdk.java.net/jdk9/dev/jdk/rev/fe0d3813e6c3
+
+Проблема, вызванная данной: https://jira.spring.io/browse/DATACMNS-1396
+
+См. итоги измерений в файле [./results/ConcurrentHashMapBenchmark.txt](./results/ConcurrentHashMapBenchmark.txt)
+
+##StringBuilderAppendBenchmark
+
+Показывает разницу между двумя способами добавления подстроки к `StringBuilder`-у:
+```java
+//1 способ
+
+String append(String str, int from, int to) {
+  return new StringBuilder().append('.').append(str, from, to).append('.').toString();
+}
+
+//2 способ
+
+String append(String str, int from, int to) {
+  String subStr = str.substring(from, to);
+  return new StringBuilder().append('.').append(str).append('.').toString();
+}
+```
+Второй способ можно привести к ещё более простому виду:
+```java
+String append(String str, int from, int to) {
+  return '.' + str.substring(from, to) + '.';
+}
+```
+
+Опыт показывает, что несмотря на схожесть обоих подходов, второй показывает лучшую производительность,
+см. итоги измерений в файле [./results/StringBuilderAppendBenchmark.txt](./results/StringBuilderAppendBenchmark.txt)
+
+Причина в том, что метод `StringBuilder.append(String)` интринзифицирован, а `StringBuilder.append(String, int, int)`
+делегирует вызов методу `AbstractStringBuilder.append(String, int, int)`, внутри которого строка добавляется познаково
+с мопощью цикла в методе `AbstractStringBuilder.appendChars(CharSequence, int, int)`. 
