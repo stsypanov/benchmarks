@@ -45,8 +45,8 @@ public class StringBuilderAppendBenchmark {
     @Param({"true", "false"})
     boolean appendNonLatin;
 
-    @Param({"10", "100", "1000"})
-    private int length;
+    @Param({"5", "10", "50", "100", "500", "1000"})
+    private int appendableLength;
 
     private int beginIndex;
     private int endIndex;
@@ -57,15 +57,15 @@ public class StringBuilderAppendBenchmark {
     public void setup() {
       latinStr = randomString("abcdefghijklmnopqrstuvwxyz");
       nonLatinStr = randomString("абвгдеёжзиклмнопрстуфхцчшщьыъэюя");
-      beginIndex = length / 4;
-      endIndex = length / 4 * 3;
+      beginIndex = 1;
+      endIndex = appendableLength - 1;
     }
 
     private String randomString(String alphabet) {
       char[] chars = alphabet.toCharArray();
 
-      StringBuilder sb = new StringBuilder(length);
-      for (int i = 0; i < length; i++) {
+      StringBuilder sb = new StringBuilder(appendableLength + 2);
+      for (int i = 0; i < appendableLength + 2; i++) {
         char c = chars[random.nextInt(chars.length)];
         sb.append(c);
       }
