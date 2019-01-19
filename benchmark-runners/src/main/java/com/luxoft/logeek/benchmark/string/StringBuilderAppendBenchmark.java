@@ -18,11 +18,15 @@ public class StringBuilderAppendBenchmark {
     int beginIndex = data.beginIndex;
     int endIndex = data.endIndex;
 
-    String substring = data.appendNonLatin ?
+    String substring = data.nonLatin ?
             nonLatinStr.substring(beginIndex, endIndex) :
             latinStr.substring(beginIndex, endIndex);
 
-    return new StringBuilder().append('L').append(substring).append(';').toString();
+    return new StringBuilder()
+            .append('L')
+            .append(substring)
+            .append(';')
+            .toString();
   }
 
   @Benchmark
@@ -32,9 +36,13 @@ public class StringBuilderAppendBenchmark {
     int beginIndex = data.beginIndex;
     int endIndex = data.endIndex;
 
-    String appended = data.appendNonLatin ? nonLatinStr : latinStr;
+    String appended = data.nonLatin ? nonLatinStr : latinStr;
 
-    return new StringBuilder().append('L').append(appended, beginIndex, endIndex).append(';').toString();
+    return new StringBuilder()
+            .append('L')
+            .append(appended, beginIndex, endIndex)
+            .append(';')
+            .toString();
   }
 
   @State(Scope.Thread)
@@ -43,10 +51,10 @@ public class StringBuilderAppendBenchmark {
     String nonLatinStr;
 
     @Param({"true", "false"})
-    boolean appendNonLatin;
+    boolean nonLatin;
 
     @Param({"5", "10", "50", "100", "500", "1000"})
-    private int appendableLength;
+    private int length;
 
     private int beginIndex;
     private int endIndex;
@@ -58,14 +66,14 @@ public class StringBuilderAppendBenchmark {
       latinStr = randomString("abcdefghijklmnopqrstuvwxyz");
       nonLatinStr = randomString("абвгдеёжзиклмнопрстуфхцчшщьыъэюя");
       beginIndex = 1;
-      endIndex = appendableLength - 1;
+      endIndex = length + 1;
     }
 
     private String randomString(String alphabet) {
       char[] chars = alphabet.toCharArray();
 
-      StringBuilder sb = new StringBuilder(appendableLength + 2);
-      for (int i = 0; i < appendableLength + 2; i++) {
+      StringBuilder sb = new StringBuilder(length + 2);
+      for (int i = 0; i < length + 2; i++) {
         char c = chars[random.nextInt(chars.length)];
         sb.append(c);
       }
