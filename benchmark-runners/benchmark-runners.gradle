@@ -1,21 +1,21 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 
-tasks.withType(JavaCompile) {
-  options.encoding = 'UTF-8'
-}
-
 repositories {
-
   maven { url "http://repo.maven.apache.org/maven2" }
   mavenLocal()
 }
+
+ext {
+  jvmVersion = "1.21"
+}
+
 dependencies {
-  compile group: 'org.openjdk.jmh', name: 'jmh-core', version: '1.21'
-  compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'
-  compile(group: 'tsypanov', name: 'benchmark-source', version: '1.0-SNAPSHOT') {
+  compile("org.openjdk.jmh:jmh-core:${jvmVersion}")
+  compile("org.apache.commons:commons-lang3:3.7")
+  compile(project(":benchmark-source")) {
     exclude(module: 'aspectjrt')
     exclude(module: 'jboss-transaction-api_1.2_spec')
   }
-  compileOnly group: 'org.openjdk.jmh', name: 'jmh-generator-annprocess', version: '1.21'
+  compileOnly("org.openjdk.jmh:jmh-generator-annprocess:${jvmVersion}")
 }
