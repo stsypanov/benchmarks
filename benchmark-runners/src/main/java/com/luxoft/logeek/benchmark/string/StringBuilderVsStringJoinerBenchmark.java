@@ -1,6 +1,7 @@
 package com.luxoft.logeek.benchmark.string;
 
 import com.luxoft.logeek.string.Joiner;
+import com.luxoft.logeek.utils.RandomStringGenerator;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Fork;
@@ -11,7 +12,6 @@ import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
 
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
@@ -48,32 +48,17 @@ public class StringBuilderVsStringJoinerBenchmark {
     public void setup() {
       final int arrayLength = 10;
 
-      String[] latinStrArray = new String[arrayLength];
-      String[] nonLatinStrArray = new String[arrayLength];
+      stringArray = new String[arrayLength];
+
+      RandomStringGenerator generator = new RandomStringGenerator();
+
+      String alphabet = latin ? "abcdefghijklmnopqrstuvwxyz" : "абвгдеёжзиклмнопрстуфхцчшщьыъэюя";
 
       for (int i = 0; i < arrayLength; i++) {
-        String latinStr = randomString("abcdefghijklmnopqrstuvwxyz", length);
-        String nonLatinStr = randomString("абвгдеёжзиклмнопрстуфхцчшщьыъэюя", length);
-
-        latinStrArray[i] = latinStr;
-        nonLatinStrArray[i] = nonLatinStr;
+        String string = generator.randomString(alphabet, length);
+        stringArray[i] = string;
       }
-
-      stringArray = latin ? latinStrArray : nonLatinStrArray;
     }
 
-    private String randomString(String alphabet, int length) {
-      char[] chars = alphabet.toCharArray();
-
-      ThreadLocalRandom threadLocalRandom = ThreadLocalRandom.current();
-
-      StringBuilder sb = new StringBuilder(length);
-      for (int i = 0; i < length; i++) {
-        char c = chars[threadLocalRandom.nextInt(chars.length)];
-        sb.append(c);
-      }
-
-      return sb.toString();
-    }
   }
 }

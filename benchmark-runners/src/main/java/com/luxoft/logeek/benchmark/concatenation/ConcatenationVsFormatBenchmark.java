@@ -1,8 +1,16 @@
 package com.luxoft.logeek.benchmark.concatenation;
 
-import org.openjdk.jmh.annotations.*;
+import com.luxoft.logeek.utils.RandomStringGenerator;
+import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.annotations.BenchmarkMode;
+import org.openjdk.jmh.annotations.Fork;
+import org.openjdk.jmh.annotations.Mode;
+import org.openjdk.jmh.annotations.OutputTimeUnit;
+import org.openjdk.jmh.annotations.Param;
+import org.openjdk.jmh.annotations.Scope;
+import org.openjdk.jmh.annotations.Setup;
+import org.openjdk.jmh.annotations.State;
 
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.AverageTime)
@@ -24,25 +32,18 @@ public class ConcatenationVsFormatBenchmark {
   public static class Data {
     String str1;
     String str2;
-    @Param({"5", "10", "100", "200"})
+    @Param({"10", "100", "1000"})
     private int length;
 
     @Setup
     public void setup() {
-      ThreadLocalRandom random = ThreadLocalRandom.current();
-      char[] chars = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+      String alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-      str1 = randomString(chars, random);
-      str2 = randomString(chars, random);
+      RandomStringGenerator generator = new RandomStringGenerator();
+
+      str1 = generator.randomString(alphabet, length);
+      str2 = generator.randomString(alphabet, length);
     }
 
-    private String randomString(char[] chars, ThreadLocalRandom random) {
-      StringBuilder sb = new StringBuilder(length);
-      for (int i = 0; i < length; i++) {
-        char c = chars[random.nextInt(chars.length)];
-        sb.append(c);
-      }
-      return sb.toString();
-    }
   }
 }

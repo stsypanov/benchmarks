@@ -1,5 +1,6 @@
 package com.luxoft.logeek.string;
 
+import com.luxoft.logeek.utils.RandomStringGenerator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,9 +8,8 @@ import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.concurrent.ThreadLocalRandom;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class JoinerTest {
@@ -38,10 +38,11 @@ public class JoinerTest {
   public void setUp() {
     String[] latinStrArray = new String[arrayLength];
     String[] nonLatinStrArray = new String[arrayLength];
+    RandomStringGenerator generator = new RandomStringGenerator();
 
     for (int i = 0; i < arrayLength; i++) {
-      String latinStr = randomString("abcdefghijklmnopqrstuvwxyz", arrayLength);
-      String nonLatinStr = randomString("абвгдеёжзиклмнопрстуфхцчшщьыъэюя", arrayLength);
+      String latinStr = generator.randomString("abcdefghijklmnopqrstuvwxyz", arrayLength);
+      String nonLatinStr = generator.randomString("абвгдеёжзиклмнопрстуфхцчшщьыъэюя", arrayLength);
 
       latinStrArray[i] = latinStr;
       nonLatinStrArray[i] = nonLatinStr;
@@ -58,17 +59,4 @@ public class JoinerTest {
     assertEquals(str1, str2);
   }
 
-  private String randomString(String alphabet, int length) {
-    char[] chars = alphabet.toCharArray();
-
-    ThreadLocalRandom threadLocalRandom = ThreadLocalRandom.current();
-
-    StringBuilder sb = new StringBuilder(length);
-    for (int i = 0; i < length; i++) {
-      char c = chars[threadLocalRandom.nextInt(chars.length)];
-      sb.append(c);
-    }
-
-    return sb.toString();
-  }
 }

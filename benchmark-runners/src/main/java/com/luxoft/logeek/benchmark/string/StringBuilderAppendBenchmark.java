@@ -1,8 +1,8 @@
 package com.luxoft.logeek.benchmark.string;
 
+import com.luxoft.logeek.utils.RandomStringGenerator;
 import org.openjdk.jmh.annotations.*;
 
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.AverageTime)
@@ -30,6 +30,7 @@ public class StringBuilderAppendBenchmark {
   }
 
   @Benchmark
+  @SuppressWarnings("StringBufferReplaceableByString")
   public String appendBounds(Data data) {
     String latinStr = data.latinStr;
     String nonLatinStr = data.nonLatinStr;
@@ -59,27 +60,17 @@ public class StringBuilderAppendBenchmark {
     private int beginIndex;
     private int endIndex;
 
-    private ThreadLocalRandom random = ThreadLocalRandom.current();
-
     @Setup
     public void setup() {
-      latinStr = randomString("abcdefghijklmnopqrstuvwxyz");
-      nonLatinStr = randomString("абвгдеёжзиклмнопрстуфхцчшщьыъэюя");
+      RandomStringGenerator generator = new RandomStringGenerator();
+
+      latinStr = generator.randomString("abcdefghijklmnopqrstuvwxyz", length);
+      nonLatinStr = generator.randomString("абвгдеёжзиклмнопрстуфхцчшщьыъэюя", length);
+
       beginIndex = 1;
       endIndex = length + 1;
     }
 
-    private String randomString(String alphabet) {
-      char[] chars = alphabet.toCharArray();
-
-      StringBuilder sb = new StringBuilder(length + 2);
-      for (int i = 0; i < length + 2; i++) {
-        char c = chars[random.nextInt(chars.length)];
-        sb.append(c);
-      }
-
-      return sb.toString();
-    }
   }
 
 }
