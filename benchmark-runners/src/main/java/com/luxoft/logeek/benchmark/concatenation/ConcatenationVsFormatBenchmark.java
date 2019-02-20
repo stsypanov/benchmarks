@@ -11,12 +11,12 @@ import java.util.concurrent.TimeUnit;
 public class ConcatenationVsFormatBenchmark {
 
   @Benchmark
-  public String measureConcatenation(Data data) {
+  public String concatenation(Data data) {
     return data.str1 + ' ' + data.str2;
   }
 
   @Benchmark
-  public String measureStringFormat(Data data) {
+  public String stringFormat(Data data) {
     return String.format("%s %s", data.str1, data.str2);
   }
 
