@@ -30,16 +30,14 @@ public class ChainedAppendBenchmark {
   @Benchmark
   @SuppressWarnings("ALL")
   public String tornAppend() {
-    StringBuilder stringBuilder = new StringBuilder()
+    StringBuilder sb = new StringBuilder()
             .append(str1)
             .append(str2)
             .append(str3);
 
-    stringBuilder.append(str4);
+    sb.append(str4);
 
-    return stringBuilder
-            .append(str5)
-            .toString();
+    return sb.append(str5).toString();
   }
 
   @Benchmark
