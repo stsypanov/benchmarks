@@ -6,9 +6,14 @@ import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 import org.openjdk.jmh.runner.options.TimeValue;
 
+import java.sql.PreparedStatement;
+import java.util.HashMap;
+import java.util.Map;
+
 public class BenchmarkRunner {
 
   public static void main(String[] args) throws Exception {
+    Map<String, ?> map = new HashMap<>();
     Options opt = new OptionsBuilder()
 //            .include(ArrayInstantiationBenchmark.class.getSimpleName())
 //            .include(BoxingBenchmark.class.getSimpleName())

@@ -1,0 +1,30 @@
+JDK 8
+
+                                             Mode  Cnt     Score     Error   Units
+
+compositeKey                                 avgt   25     5,134 ±   0,274   ns/op
+concatenation                                avgt   25    67,999 ±   5,872   ns/op
+
+compositeKey:·gc.alloc.rate.norm             avgt   25    24,000 ±   0,001    B/op
+concatenation:·gc.alloc.rate.norm            avgt   25   224,000 ±   0,001    B/op
+
+equalsCompositeKey                           avgt   25     3,229 ±   0,161   ns/op
+equalsCompositeString                        avgt   25     6,447 ±   0,448   ns/op
+
+hashCodeCompositeKey                         avgt   25     2,584 ±   0,054   ns/op
+hashCodeCompositeString                      avgt   25     2,069 ±   0,028   ns/op
+
+JDK 11
+                                             Mode  Cnt     Score    Error   Units
+
+compositeKey                                 avgt   25     5,851 ±  0,271   ns/op
+concatenation                                avgt   25    61,900 ±  4,406   ns/op
+
+compositeKey:·gc.alloc.rate.norm             avgt   25    24,000 ±  0,001    B/op
+concatenation:·gc.alloc.rate.norm            avgt   25   168,000 ±  0,001    B/op
+
+equalsCompositeKey                           avgt   25     3,177 ±  0,254   ns/op
+equalsCompositeString                        avgt   25     5,787 ±  0,305   ns/op
+
+hashCodeCompositeKey                         avgt   25     2,947 ±  0,105   ns/op
+hashCodeCompositeString                      avgt   25     2,187 ±  0,083   ns/op

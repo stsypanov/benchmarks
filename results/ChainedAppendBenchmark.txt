@@ -1,0 +1,12 @@
+JDK 11
+                                            Mode  Cnt     Score     Error   Units
+chainedAppend                               avgt   25    41,142 ±   5,112   ns/op
+concatenation                               avgt   25    43,393 ±   2,949   ns/op
+newLineAppend                               avgt   25    75,893 ±   2,392   ns/op
+tornAppend                                  avgt   25    79,211 ±   5,185   ns/op
+
+chainedAppend:·gc.alloc.rate.norm           avgt   25    96,000 ±   0,001    B/op
+concatenation:·gc.alloc.rate.norm           avgt   25    96,000 ±   0,001    B/op
+newLineAppend:·gc.alloc.rate.norm           avgt   25   296,000 ±   0,001    B/op
+tornAppend:·gc.alloc.rate.norm              avgt   25   296,000 ±   0,001    B/op
+

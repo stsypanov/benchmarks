@@ -1,0 +1,7 @@
+JDK 11
+
+                                Mode  Cnt   Score    Error   Units
+enumMap                         avgt   25  23,677 ±  0,441   ns/op
+hashMap                         avgt   25  41,163 ±  4,987   ns/op
+enumMap:·gc.alloc.rate.norm     avgt   25  ≈ 10⁻⁶             B/op
+hashMap:·gc.alloc.rate.norm     avgt   25  ≈ 10⁻⁶             B/op
