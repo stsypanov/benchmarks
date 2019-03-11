@@ -35,13 +35,13 @@ public class CollectionsAddAllVsAddAllBenchmark {
     private static final String COPY_ON_WRITE_ARRAY_LIST = "CopyOnWriteArrayList";
     private static final String CONCURRENT_LINKED_DEQUE = "ConcurrentLinkedDeque";
 
-    Integer array[];
+    private Integer[] array;
 
     @Param({ARRAY_LIST, HASH_SET, ARRAY_DEQUE, COPY_ON_WRITE_ARRAY_LIST, CONCURRENT_LINKED_DEQUE})
-    String collection;
+    private String collection;
 
     @Param({"10", "100", "1000"})
-    int size;
+    private int size;
 
     @Setup
     public void setup() {
@@ -51,7 +51,7 @@ public class CollectionsAddAllVsAddAllBenchmark {
               .toArray(Integer[]::new);
     }
 
-    Collection<Integer> freshCollection() {
+    private Collection<Integer> freshCollection() {
       switch (collection) {
         case ARRAY_LIST:
           return new ArrayList<>();
