@@ -19,8 +19,8 @@ import static org.junit.Assert.assertEquals;
 
 @Commit
 @Transactional
-//@ActiveProfiles("flush")
-@ActiveProfiles("flush-postgres")
+@ActiveProfiles("flush")
+//@ActiveProfiles("flush-postgres")
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SaveAndFlushExampleConfig.class)
 public class SimpleSaverImplTest {

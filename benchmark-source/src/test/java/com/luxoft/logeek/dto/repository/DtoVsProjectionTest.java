@@ -24,8 +24,8 @@ import static org.junit.Assert.assertNotNull;
 
 @Commit
 @Transactional
-//@ActiveProfiles("flush")
-@ActiveProfiles("flush-postgres")
+@ActiveProfiles("flush")
+//@ActiveProfiles("flush-postgres")
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DtoVsProjectionConfig.class)
 public class DtoVsProjectionTest {
