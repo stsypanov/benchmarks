@@ -250,3 +250,52 @@ CharacterReplaceBenchmark.manualReplace:·gc.alloc.rate.norm    avgt   25   112,
 CharacterReplaceBenchmark.stringReplace                        avgt   25    15,185 ±   0,067   ns/op
 CharacterReplaceBenchmark.stringReplace:·gc.alloc.rate.norm    avgt   25    56,000 ±   0,001    B/op
 ```
+
+##VolatileFieldBenchmark
+Показывает ненужность (и вредность для производительности) присваивания
+значения по умолчанию волатильному полю, что вынуждает исполнение вставлять
+дополнительные инструкции для сохранения happens-before поведения даже при отсутствии
+связанных чтений/записей.
+Создание объекта этого класса стоит значительно дороже
+```java
+private static class ExplicitInit {
+  private volatile boolean field = false;
+}
+``` 
+чем вот этого:
+```java
+private static class NoInit {
+  private volatile boolean field;
+}
+```
+Отсюда проистекает избыточность явного зануления объектов атомарных классов:
+```java
+@State(Scope.Thread)
+@OutputTimeUnit(TimeUnit.NANOSECONDS)
+@BenchmarkMode(value = Mode.AverageTime)
+public class AtomicBenchmark {
+  @Benchmark
+  public Object defaultValue() {
+    return new AtomicInteger();
+  }
+  @Benchmark
+  public Object explicitValue() {
+    return new AtomicInteger(0);
+  }
+}
+```
+Метод `explicitValue` работает в 2,5 раза дольше:
+```
+Benchmark                      Mode  Cnt   Score   Error  Units
+AtomicBenchmark.defaultValue   avgt   30   4.778 ± 0.403  ns/op
+AtomicBenchmark.explicitValue  avgt   30  11.846 ± 0.273  ns/op
+```
+Примеры из жизни:
+- https://github.com/openjdk/jdk/pull/218
+- https://github.com/openjdk/jdk/pull/818
+- https://github.com/spring-projects/spring-framework/pull/25261
+- https://github.com/spring-projects/spring-framework/pull/25846
+
+Также см.  
+- подробное объяснение ненужности явного присваивания http://cs.oswego.edu/pipermail/concurrency-interest/2015-December/014767.html
+- задача для создания соответствующей проверки https://youtrack.jetbrains.com/issue/IDEA-243752

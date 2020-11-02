@@ -10,6 +10,14 @@ import org.openjdk.jmh.annotations.OutputTimeUnit;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.State;
 
+/**
+ * See related pull requests
+ *
+ * @link https://github.com/openjdk/jdk/pull/218
+ * @link https://github.com/openjdk/jdk/pull/818
+ * @link https://github.com/spring-projects/spring-framework/pull/25261
+ * @link https://github.com/spring-projects/spring-framework/pull/25846
+ */
 @State(Scope.Thread)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @BenchmarkMode(value = Mode.AverageTime)
@@ -27,29 +35,11 @@ public class VolatileFieldBenchmark {
   }
 
   private static class ExplicitInit {
-
     private volatile boolean field = false;
-
-    public boolean isField() {
-      return field;
-    }
-
-    public void setField(boolean field) {
-      this.field = field;
-    }
   }
 
   private static class NoInit {
-
     private volatile boolean field;
-
-    public boolean isField() {
-      return field;
-    }
-
-    public void setField(boolean field) {
-      this.field = field;
-    }
   }
 
 }
