@@ -284,11 +284,17 @@ public class AtomicBenchmark {
   }
 }
 ```
-Метод `explicitValue` работает в 2,5 раза дольше:
+Метод `explicitValue` работает в 2,5 раза дольше (Java 8):
 ```
 Benchmark                      Mode  Cnt   Score   Error  Units
 AtomicBenchmark.defaultValue   avgt   30   4.778 ± 0.403  ns/op
 AtomicBenchmark.explicitValue  avgt   30  11.846 ± 0.273  ns/op
+```
+и 
+```
+Benchmark                                   Mode  Cnt  Score   Error  Units
+VolatileFieldZeroingBenchmark.explicitInit  avgt  100  8.285 ± 0.022  ns/op
+VolatileFieldZeroingBenchmark.noInit        avgt  100  3.465 ± 0.029  ns/op
 ```
 Примеры из жизни:
 - https://github.com/openjdk/jdk/pull/218

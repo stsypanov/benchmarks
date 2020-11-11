@@ -22,7 +22,7 @@ import org.openjdk.jmh.annotations.State;
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @BenchmarkMode(value = Mode.AverageTime)
 @Fork(jvmArgsAppend = {"-Xms2g", "-Xmx2g"})
-public class VolatileFieldBenchmark {
+public class VolatileFieldZeroingBenchmark {
 
   @Benchmark
   public Object explicitInit() {
@@ -35,11 +35,11 @@ public class VolatileFieldBenchmark {
   }
 
   private static class ExplicitInit {
-    private volatile boolean field = false;
+    private volatile int count = 0;
   }
 
   private static class NoInit {
-    private volatile boolean field;
+    private volatile int count;
   }
 
 }
